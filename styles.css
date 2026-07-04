@@ -80,7 +80,6 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px 56px; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
 .summary-panel {
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -91,8 +90,6 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px 56px; }
 .summary-panel p { margin: 0; color: var(--muted); }
 .section { padding: 42px 0; }
 .section-heading { margin-bottom: 16px; }
-.split-heading { display: flex; align-items: end; justify-content: space-between; gap: 28px; }
-.split-heading > p { max-width: 420px; margin: 0; color: var(--muted); }
 .section-heading h2, .full-article h2, .workflow h2, .summary-panel h2 { margin: 6px 0 0; font-size: 34px; line-height: 1.2; }
 .article-list { display: grid; gap: 18px; }
 .article-card {
@@ -120,27 +117,40 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px 56px; }
   font-size: 13px;
   font-weight: 800;
 }
-.grid-section { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.insight-card {
-  min-height: 260px;
+.browse-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.search-input {
+  flex: 1 1 220px;
+  min-height: 44px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: var(--panel);
-  padding: 22px;
-  display: block;
-  width: 100%;
+  padding: 0 14px;
   font: inherit;
-  color: inherit;
-  text-align: left;
-  cursor: pointer;
-  transition: border-color 160ms ease, box-shadow 160ms ease;
+  font-size: 15px;
+  background: var(--panel);
+  color: var(--ink);
 }
-.insight-card:hover { border-color: var(--accent); }
-.insight-card.active { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent) inset; }
-.compact-card { min-height: 220px; }
-.card-number { color: var(--accent-2); font-weight: 900; }
-.insight-card h3 { margin: 28px 0 10px; font-size: 23px; }
-.insight-card p { margin: 0; color: var(--muted); }
+.search-input::placeholder { color: var(--muted); }
+.filter-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  padding: 9px 16px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+}
+.chip:hover { border-color: var(--accent); }
+.chip.active { background: var(--ink); border-color: var(--ink); color: #fff; }
 .filter-status {
   display: flex;
   align-items: center;
@@ -266,11 +276,19 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px 56px; }
 .keypoint-strip span {
   color: var(--muted);
 }
+.about-workflow {
+  margin-top: 48px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px 24px;
+}
+.about-workflow .eyebrow { color: var(--muted); }
+.about-workflow h3 { margin: 4px 0 12px; font-size: 16px; color: var(--muted); }
+.about-workflow ol { display: grid; gap: 6px; margin: 0; padding-left: 20px; font-size: 14px; color: var(--muted); }
+.about-workflow strong { color: var(--ink); }
+.about-workflow code { background: rgba(16, 24, 32, 0.06); padding: 1px 5px; border-radius: 4px; font-size: 13px; }
 @media (max-width: 880px) {
   .workflow, .article-body { grid-template-columns: 1fr; }
-  .grid-section { grid-template-columns: 1fr 1fr; }
-  .split-heading { display: block; }
-  .split-heading > p { margin-top: 10px; }
 }
 @media (max-width: 620px) {
   .nav, main { padding-left: 16px; padding-right: 16px; }
@@ -284,7 +302,6 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px 56px; }
   .compact-list-card { padding: 18px; }
   .compact-list-card h3 { font-size: 20px; }
   .read-link { display: inline-flex; align-items: center; margin-top: 18px; }
-  .grid-section { grid-template-columns: 1fr; }
   .full-article, .workflow, .source-box, .article-hero, .summary-panel, .keypoint-strip { padding: 24px; }
   .keypoint-strip li { grid-template-columns: 1fr; gap: 4px; }
   .article-nav { display: grid; }

@@ -33,39 +33,34 @@
         <p class="eyebrow">GPT / Claude / Codex / Agent / Skill</p>
         <h1>AI 技術工作流筆記</h1>
         <p>整理 Codex、Claude、GPT、Agent、Skill 的實戰用法，把文章變成可複用的工作流。</p>
-        <div class="hero-actions">
-          <a class="primary-link" href="#articles">看最新文章</a>
-          <a class="secondary-link" href="#taxonomy">瀏覽分類</a>
-        </div>
       </section>
 
       <section class="section first-section" id="articles">
-        <div class="section-heading split-heading">
-          <div>
-            <p class="eyebrow">Latest Notes</p>
-            <h2>最新文章</h2>
+        <div class="section-heading">
+          <p class="eyebrow">Latest Notes</p>
+          <h2>最新文章</h2>
+        </div>
+        <div class="browse-bar">
+          <input type="search" id="searchInput" class="search-input" placeholder="搜尋標題、摘要、標籤…" aria-label="搜尋文章" />
+          <div class="filter-chips" id="filterChips">
+            <button type="button" class="chip" data-filter="Codex" aria-pressed="false">Codex</button>
+            <button type="button" class="chip" data-filter="Agent" aria-pressed="false">Agent</button>
+            <button type="button" class="chip" data-filter="Skill" aria-pressed="false">Skill</button>
+            <button type="button" class="chip" data-filter="Tooling" aria-pressed="false">Tooling</button>
           </div>
-          <p>第一篇主打，其餘文章用緊湊列表，手機上更快掃描。</p>
         </div>
         <div class="filter-status" id="filterStatus" hidden></div>
         <div class="article-list" id="articleList" aria-live="polite"></div>
       </section>
 
-      <section class="section grid-section" id="taxonomy">
-        <button type="button" class="insight-card" data-filter="Codex" aria-pressed="false"><span class="card-number">01</span><h3>Codex</h3><p>整理 Codex 在文書、課程、資料夾、自動化與專案工作中的使用案例。</p></button>
-        <button type="button" class="insight-card" data-filter="Agent" aria-pressed="false"><span class="card-number">02</span><h3>Agent</h3><p>記錄代理人如何拆任務、讀資料、執行工具、回寫成果與交付驗收。</p></button>
-        <button type="button" class="insight-card" data-filter="Skill" aria-pressed="false"><span class="card-number">03</span><h3>Skill</h3><p>追蹤 Skill、prompt、workflow、validator 之間的邊界與落地方式。</p></button>
-        <button type="button" class="insight-card" data-filter="Tooling" aria-pressed="false"><span class="card-number">04</span><h3>Tooling</h3><p>整理 MCP、harness、browser control、GitHub、Cloudflare Pages 等工具鏈。</p></button>
-      </section>
-
-      <section class="workflow" id="workflow">
-        <div><p class="eyebrow">Publishing Workflow</p><h2>下一篇文章的固定流程</h2></div>
+      <section class="about-workflow" id="workflow">
+        <p class="eyebrow">About this site</p>
+        <h3>這個網站怎麼更新</h3>
         <ol>
           <li><strong>你貼資料：</strong>新聞、文章、截圖、連結或自己的筆記。</li>
           <li><strong>我補來源：</strong>查原文與相關資料，但不整篇搬運。</li>
           <li><strong>寫入資料庫：</strong>在 <code>data/articles/</code> 新增一個 JSON 檔，加進 <code>index.json</code> 順序清單。</li>
           <li><strong>建置：</strong>跑 <code>node scripts/build-articles.mjs</code>，自動產生 <code>data/articles.js</code> 與 <code>sitemap.xml</code>。</li>
-          <li><strong>自動呈現：</strong>首頁多一張卡片，文章頁自動渲染。</li>
           <li><strong>部署更新：</strong>GitHub 更新後 Cloudflare Pages 自動發布。</li>
         </ol>
       </section>

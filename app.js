@@ -97,24 +97,39 @@ function articleUrl(article) {
 }
 
 let activeFilter = null;
+let searchQuery = "";
 
 function matchesFilter(article, filter) {
   if (!filter) return true;
   return article.tags.includes(filter) || article.category.includes(filter);
 }
 
+function matchesSearch(article, query) {
+  if (!query) return true;
+  const haystack = [article.title, article.summary, article.category, ...article.tags].join(" ").toLowerCase();
+  return haystack.includes(query.toLowerCase());
+}
+
 function renderHome() {
   const list = document.querySelector("#articleList");
   if (!list) return;
 
-  const filtered = articles.filter((article) => matchesFilter(article, activeFilter));
+  const filtered = articles.filter((article) => matchesFilter(article, activeFilter) && matchesSearch(article, searchQuery));
 
   const status = document.querySelector("#filterStatus");
   if (status) {
-    if (activeFilter) {
+    const parts = [];
+    if (activeFilter) parts.push(`分類：${escapeHtml(activeFilter)}`);
+    if (searchQuery) parts.push(`關鍵字：${escapeHtml(searchQuery)}`);
+    if (parts.length) {
       status.hidden = false;
-      status.innerHTML = `篩選：${escapeHtml(activeFilter)}（${filtered.length} 篇）<button type="button" id="clearFilter">清除篩選</button>`;
-      document.querySelector("#clearFilter")?.addEventListener("click", () => setFilter(null));
+      status.innerHTML = `${parts.join("・")}（${filtered.length} 篇）<button type="button" id="clearFilter">清除篩選</button>`;
+      document.querySelector("#clearFilter")?.addEventListener("click", () => {
+        searchQuery = "";
+        const input = document.querySelector("#searchInput");
+        if (input) input.value = "";
+        setFilter(null);
+      });
     } else {
       status.hidden = true;
       status.innerHTML = "";
@@ -122,7 +137,7 @@ function renderHome() {
   }
 
   if (!filtered.length) {
-    list.innerHTML = `<p class="empty-state">目前沒有「${escapeHtml(activeFilter)}」分類的文章。</p>`;
+    list.innerHTML = `<p class="empty-state">沒有符合條件的文章。</p>`;
     return;
   }
 
@@ -147,18 +162,22 @@ function renderHome() {
 
 function setFilter(filter) {
   activeFilter = activeFilter === filter ? null : filter;
-  document.querySelectorAll(".insight-card").forEach((button) => {
+  document.querySelectorAll(".chip").forEach((button) => {
     const isActive = button.dataset.filter === activeFilter;
     button.classList.toggle("active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
   });
   renderHome();
-  document.querySelector("#articles")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function setupTaxonomyFilters() {
-  document.querySelectorAll(".insight-card").forEach((button) => {
+function setupFilters() {
+  document.querySelectorAll(".chip").forEach((button) => {
     button.addEventListener("click", () => setFilter(button.dataset.filter));
+  });
+  const input = document.querySelector("#searchInput");
+  input?.addEventListener("input", () => {
+    searchQuery = input.value.trim();
+    renderHome();
   });
 }
 
@@ -246,6 +265,6 @@ function renderArticle() {
 
 if (document.body.dataset.page === "home") {
   renderHome();
-  setupTaxonomyFilters();
+  setupFilters();
 }
 if (document.body.dataset.page === "article") renderArticle();
