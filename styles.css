@@ -196,7 +196,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px 56px; }
   background: rgba(255, 255, 255, 0.06);
   border-radius: 0 6px 6px 0;
 }
-.prompt-quote p { flex: 1; margin: 0; color: rgba(255, 255, 255, 0.92); font-size: 14px; }
+.prompt-quote p { flex: 1; margin: 0; color: rgba(255, 255, 255, 0.92); font-size: 14px; white-space: pre-line; }
 .copy-btn {
   flex-shrink: 0;
   border: 1px solid rgba(255, 255, 255, 0.3);
