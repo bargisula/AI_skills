@@ -9,7 +9,7 @@
     <meta name="description" content="整理 GPT、Claude、Codex、Agent、Skill 與 AI 工作流案例的 PWA 知識庫。" />
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" href="./icons/icon.svg" />
-    <link rel="apple-touch-icon" href="./icons/icon.svg" />
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
     <link rel="stylesheet" href="./styles.css" />
     <title>AI Skills 知識工作流</title>
   </head>
@@ -54,14 +54,15 @@
           </div>
           <p>第一篇主打，其餘文章用緊湊列表，手機上更快掃描。</p>
         </div>
+        <div class="filter-status" id="filterStatus" hidden></div>
         <div class="article-list" id="articleList" aria-live="polite"></div>
       </section>
 
       <section class="section grid-section" id="taxonomy">
-        <div class="insight-card"><span class="card-number">01</span><h3>Codex</h3><p>整理 Codex 在文書、課程、資料夾、自動化與專案工作中的使用案例。</p></div>
-        <div class="insight-card"><span class="card-number">02</span><h3>Agent</h3><p>記錄代理人如何拆任務、讀資料、執行工具、回寫成果與交付驗收。</p></div>
-        <div class="insight-card"><span class="card-number">03</span><h3>Skill</h3><p>追蹤 Skill、prompt、workflow、validator 之間的邊界與落地方式。</p></div>
-        <div class="insight-card"><span class="card-number">04</span><h3>Tooling</h3><p>整理 MCP、harness、browser control、GitHub、Cloudflare Pages 等工具鏈。</p></div>
+        <button type="button" class="insight-card" data-filter="Codex" aria-pressed="false"><span class="card-number">01</span><h3>Codex</h3><p>整理 Codex 在文書、課程、資料夾、自動化與專案工作中的使用案例。</p></button>
+        <button type="button" class="insight-card" data-filter="Agent" aria-pressed="false"><span class="card-number">02</span><h3>Agent</h3><p>記錄代理人如何拆任務、讀資料、執行工具、回寫成果與交付驗收。</p></button>
+        <button type="button" class="insight-card" data-filter="Skill" aria-pressed="false"><span class="card-number">03</span><h3>Skill</h3><p>追蹤 Skill、prompt、workflow、validator 之間的邊界與落地方式。</p></button>
+        <button type="button" class="insight-card" data-filter="Tooling" aria-pressed="false"><span class="card-number">04</span><h3>Tooling</h3><p>整理 MCP、harness、browser control、GitHub、Cloudflare Pages 等工具鏈。</p></button>
       </section>
 
       <section class="workflow" id="workflow">

@@ -96,11 +96,37 @@ function articleUrl(article) {
   return `./article.html?id=${encodeURIComponent(article.id)}`;
 }
 
+let activeFilter = null;
+
+function matchesFilter(article, filter) {
+  if (!filter) return true;
+  return article.tags.includes(filter) || article.category.includes(filter);
+}
+
 function renderHome() {
   const list = document.querySelector("#articleList");
   if (!list) return;
 
-  list.innerHTML = articles
+  const filtered = articles.filter((article) => matchesFilter(article, activeFilter));
+
+  const status = document.querySelector("#filterStatus");
+  if (status) {
+    if (activeFilter) {
+      status.hidden = false;
+      status.innerHTML = `篩選：${escapeHtml(activeFilter)}（${filtered.length} 篇）<button type="button" id="clearFilter">清除篩選</button>`;
+      document.querySelector("#clearFilter")?.addEventListener("click", () => setFilter(null));
+    } else {
+      status.hidden = true;
+      status.innerHTML = "";
+    }
+  }
+
+  if (!filtered.length) {
+    list.innerHTML = `<p class="empty-state">目前沒有「${escapeHtml(activeFilter)}」分類的文章。</p>`;
+    return;
+  }
+
+  list.innerHTML = filtered
     .map((article, index) => {
       const tags = article.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("");
       const cardClass = index === 0 ? "article-card library-card featured-card" : "article-card library-card compact-list-card";
@@ -117,6 +143,23 @@ function renderHome() {
       `;
     })
     .join("");
+}
+
+function setFilter(filter) {
+  activeFilter = activeFilter === filter ? null : filter;
+  document.querySelectorAll(".insight-card").forEach((button) => {
+    const isActive = button.dataset.filter === activeFilter;
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+  renderHome();
+  document.querySelector("#articles")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function setupTaxonomyFilters() {
+  document.querySelectorAll(".insight-card").forEach((button) => {
+    button.addEventListener("click", () => setFilter(button.dataset.filter));
+  });
 }
 
 function renderArticle() {
@@ -201,5 +244,8 @@ function renderArticle() {
   `;
 }
 
-if (document.body.dataset.page === "home") renderHome();
+if (document.body.dataset.page === "home") {
+  renderHome();
+  setupTaxonomyFilters();
+}
 if (document.body.dataset.page === "article") renderArticle();

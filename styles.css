@@ -136,11 +136,39 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px 56px; }
   border-radius: 8px;
   background: var(--panel);
   padding: 22px;
+  display: block;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
 }
+.insight-card:hover { border-color: var(--accent); }
+.insight-card.active { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent) inset; }
 .compact-card { min-height: 220px; }
 .card-number { color: var(--accent-2); font-weight: 900; }
 .insight-card h3 { margin: 28px 0 10px; font-size: 23px; }
 .insight-card p { margin: 0; color: var(--muted); }
+.filter-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: var(--muted);
+  font-weight: 700;
+}
+.filter-status button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  padding: 4px 12px;
+  font: inherit;
+  font-weight: 800;
+  color: var(--accent-3);
+  cursor: pointer;
+}
+.empty-state { color: var(--muted); }
 .full-article, .workflow, .source-box, .article-hero {
   border-radius: 8px;
   background: var(--panel);
