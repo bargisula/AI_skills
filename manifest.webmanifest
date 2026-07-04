@@ -1,0 +1,19 @@
+{
+  "name": "AI Skills 知識工作流",
+  "short_name": "AI Skills",
+  "description": "整理 GPT、Claude、Codex、Agent、Skill 與 AI 工作流案例的 PWA 知識庫。",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f4ee",
+  "theme_color": "#101820",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
