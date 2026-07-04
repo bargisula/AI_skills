@@ -94,10 +94,11 @@ function renderHome() {
   if (!list) return;
 
   list.innerHTML = articles
-    .map((article) => {
+    .map((article, index) => {
       const tags = article.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("");
+      const cardClass = index === 0 ? "article-card library-card featured-card" : "article-card library-card compact-list-card";
       return `
-        <article class="article-card library-card">
+        <article class="${cardClass}">
           <div>
             <p class="article-meta">${escapeHtml(article.date)} / ${escapeHtml(article.category)}</p>
             <h3>${escapeHtml(article.title)}</h3>
@@ -126,12 +127,11 @@ function renderArticle() {
 
   document.title = `${article.title}｜AI Skills`;
   const keyPoints = article.keyPoints
-    .map((point, index) => `
-      <div class="insight-card compact-card">
-        <span class="card-number">${String(index + 1).padStart(2, "0")}</span>
-        <h3>${escapeHtml(point.title)}</h3>
-        <p>${escapeHtml(point.text)}</p>
-      </div>
+    .map((point) => `
+      <li>
+        <strong>${escapeHtml(point.title)}</strong>
+        <span>${escapeHtml(point.text)}</span>
+      </li>
     `)
     .join("");
 
@@ -163,7 +163,11 @@ function renderArticle() {
       <p>${escapeHtml(article.summary)}</p>
     </section>
 
-    <section class="section grid-section article-keypoints">${keyPoints}</section>
+    <section class="keypoint-strip">
+      <p class="eyebrow">Key Points</p>
+      <h2>重點摘要</h2>
+      <ul>${keyPoints}</ul>
+    </section>
 
     <section class="full-article article-content">
       <p class="eyebrow">Digest</p>
