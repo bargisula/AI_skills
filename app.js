@@ -36,7 +36,11 @@ const fallbackArticles = [
       { title: "建立知識管線", text: "Codex 可以搜尋舊文章、整理圖片與案例、輸出課程大綱或簡報草稿。" },
       { title: "拆素材、寫規則", text: "把既有簡報、講義和報告拆成可重組素材，再把成功做法寫回規則或 skill。" }
     ],
-    workflow: ["讓 Codex 讀專案脈絡", "指定輸出格式與限制", "先做小範圍測試", "確認後擴大批次處理", "把成功流程寫成規則或 skill"],
+    workflow: [
+      { step: "搜尋與整理", prompt: "請搜尋我資料夾裡跟「[主題]」有關的舊文章、筆記與圖片，列出每一份的標題、日期、一句話重點，並依主題分類整理成清單。" },
+      { step: "製作課程大綱", prompt: "根據上面整理好的清單，幫我規劃一份課程大綱：列出每個章節標題、學習目標、預計時長，並標註哪些既有素材可以直接沿用、哪些需要補充。" },
+      { step: "要求輸出", prompt: "請把第一章節展開成完整簡報草稿，條列重點、每頁不超過 5 行，並在最後附上這份簡報引用了哪些原始素材。" }
+    ],
     take: "這篇適合作為進階案例：它展示 Codex 如何從單次任務，延伸成可持續累積的知識工作流。"
   }
 ];
@@ -81,6 +85,32 @@ function escapeHtml(value) {
 function articleUrl(article) {
   return `./article.html?id=${encodeURIComponent(article.id)}`;
 }
+
+function renderWorkflowStep(step) {
+  if (typeof step === "string") return `<li>${escapeHtml(step)}</li>`;
+  return `
+    <li>
+      <strong>${escapeHtml(step.step)}</strong>
+      <blockquote class="prompt-quote">
+        <p>${escapeHtml(step.prompt)}</p>
+        <button type="button" class="copy-btn" data-prompt="${escapeHtml(step.prompt)}">複製</button>
+      </blockquote>
+    </li>
+  `;
+}
+
+document.addEventListener("click", async (event) => {
+  const button = event.target.closest(".copy-btn");
+  if (!button) return;
+  try {
+    await navigator.clipboard.writeText(button.dataset.prompt);
+    const original = button.textContent;
+    button.textContent = "已複製";
+    setTimeout(() => { button.textContent = original; }, 1500);
+  } catch {
+    /* clipboard unavailable, ignore */
+  }
+});
 
 let activeFilter = null;
 let searchQuery = "";
@@ -195,7 +225,7 @@ function renderArticle() {
     ? `
     <section class="workflow article-workflow">
       <div><p class="eyebrow">Execution</p><h2>操作說明</h2></div>
-      <ol>${article.workflow.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
+      <ol>${article.workflow.map(renderWorkflowStep).join("")}</ol>
     </section>
   `
     : "";
