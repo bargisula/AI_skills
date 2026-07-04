@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101820" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="AI Skills" />
+    <meta name="description" content="整理 GPT、Claude、Codex、Agent、Skill 與 AI 工作流案例的 PWA 知識庫。" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icons/icon.svg" />
+    <link rel="apple-touch-icon" href="./icons/icon.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>AI Skills 知識工作流</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="brand" href="#home" aria-label="AI Skills 首頁">
+          <span class="brand-mark">AI</span>
+          <span><strong>AI Skills</strong><small>知識工作流資料庫</small></span>
+        </a>
+        <button class="install-button" id="installButton" hidden>安裝</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow">Codex / Agent / Skill / Workflow</p>
+          <h1>把 AI 工具放進真實工作流程，而不是只拿來聊天。</h1>
+          <p>這裡整理 GPT、Claude、Codex 這類工具的實戰案例：從文書編輯、課程教材、資料整理，到可重複使用的工作規則。</p>
+          <div class="hero-actions">
+            <a class="primary-link" href="#article-codex-workflow">閱讀本篇摘要</a>
+            <a class="secondary-link" href="#workflow">查看工作流</a>
+          </div>
+        </div>
+        <div class="hero-panel" aria-label="文章重點">
+          <span>本篇重點</span>
+          <strong>Codex 不只是寫程式</strong>
+          <p>它可以讀脈絡、接手繁瑣步驟、輸出成果，再把成功流程沉澱成下一次可沿用的規則。</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Latest Note</p>
+          <h2>最新整理</h2>
+        </div>
+        <article class="article-card" id="article-codex-workflow">
+          <div>
+            <p class="article-meta">2026.07.04 / Codex / AI Agent</p>
+            <h3>Codex 我常用的知識工作案例分享：從文書編輯、課程教材到資料整理的 AI 工作流</h3>
+            <p>摘要自電腦玩物 Esor Huang 的實戰分享。文章核心不是讓 AI 從零幻想答案，而是把 Codex 放進既有資料、文件與工具流程裡，協助完成中間那些重複、耗時、需要整理與轉換的工作。</p>
+          </div>
+          <a class="read-link" href="#full-article">閱讀整理</a>
+        </article>
+      </section>
+
+      <section class="section grid-section">
+        <div class="insight-card"><span class="card-number">01</span><h3>先讀脈絡</h3><p>讓 Codex 讀專案資料夾、文稿、PDF、簡報、講義與既有規則，先理解現在要接手的是什麼工作。</p></div>
+        <div class="insight-card"><span class="card-number">02</span><h3>縮小成果</h3><p>不要只說整理一下，而是定義清楚輸出，例如提詞簡報、PDF 擷取、文案多版本或課程案例。</p></div>
+        <div class="insight-card"><span class="card-number">03</span><h3>小範圍測試</h3><p>先處理一小段資料或一份文件，確認規則有效後，再把流程擴大到整批素材。</p></div>
+        <div class="insight-card"><span class="card-number">04</span><h3>寫回規則</h3><p>成功後把做法沉澱成 reusable rule 或 skill，讓下一次同類任務不用重新摸索。</p></div>
+      </section>
+
+      <article class="full-article" id="full-article">
+        <p class="eyebrow">Article Digest</p>
+        <h2>文章摘要：Codex 作為知識工作助理的六種用法</h2>
+        <p>這篇文章最值得抓住的觀點是：Codex 的價值不只在寫程式，而是在能進入真實資料夾、文件與工具流程，接手那些原本消耗注意力的中間步驟。</p>
+        <div class="article-body">
+          <section><h3>1. 行銷與文案：跑多輪版本</h3><p>先提供專案資料、既有草稿與文案架構，再讓 Codex 進行多輪改寫與比較。人的角色保留在判斷、挑選與整合。</p></section>
+          <section><h3>2. 文書與教材：轉成可用格式</h3><p>逐字稿改成錄課用提詞簡報、PDF 擷取與裁切，這類工作格式細節多，適合依規則批次處理。</p></section>
+          <section><h3>3. 知識管線：從輸入到輸出</h3><p>搜尋舊文章、挑出案例、整理圖片與操作步驟，再輸出成課程大綱或簡報草稿，讓分散素材變成可交付成果。</p></section>
+          <section><h3>4. 素材拆解：變成可重組零件</h3><p>講義、簡報與報告裡藏著可重用的案例、段落和模板。Codex 適合先做第一輪拆解，人再判斷保留價值。</p></section>
+          <section><h3>5. 儀表板平台：資料變流程</h3><p>把教材、題目、錯題與學習紀錄整理成可練習、可追蹤的系統，讓資料變成可以持續使用的工具。</p></section>
+          <section><h3>6. 操作另一個 AI：跑案例演練</h3><p>Codex 可以依講義步驟操作 ChatGPT，建立企業情境案例；最後是否符合教學需求，仍由講師判斷。</p></section>
+        </div>
+      </article>
+
+      <section class="workflow" id="workflow">
+        <div><p class="eyebrow">Reusable Workflow</p><h2>可重複使用的 Codex 工作法</h2></div>
+        <ol>
+          <li><strong>提供方向：</strong>說清楚這次要解決的工作問題。</li>
+          <li><strong>提供素材：</strong>讓 Codex 讀文件、資料夾、簡報、PDF 或網頁。</li>
+          <li><strong>定義限制：</strong>指定格式、頁數、輸出樣式、來源與驗收條件。</li>
+          <li><strong>交給執行：</strong>讓 Codex 處理重複、繁瑣、跨工具的中間流程。</li>
+          <li><strong>人工驗收：</strong>人負責判斷成果是否符合目的。</li>
+          <li><strong>沉澱規則：</strong>把成功做法寫成下一次可沿用的規則或 skill。</li>
+        </ol>
+      </section>
+
+      <section class="source-box">
+        <p>來源文章</p>
+        <a href="https://www.playpcesor.com/2026/06/codex-ai.html" target="_blank" rel="noreferrer">電腦玩物：Codex 我常用的知識工作案例分享</a>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
