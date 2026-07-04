@@ -191,6 +191,72 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px 56px; }
   font-weight: 900;
   text-decoration: none;
 }
+.compact-hero {
+  min-height: auto;
+  padding: 38px 0 24px;
+}
+.compact-hero .hero-copy h1 {
+  font-size: clamp(40px, 5vw, 64px);
+}
+.compact-hero .hero-actions {
+  margin-top: 20px;
+}
+.first-section {
+  padding-top: 28px;
+}
+.featured-card {
+  border-top-color: var(--accent-2);
+}
+.compact-list-card {
+  align-items: center;
+  padding: 18px 22px;
+  border-top-width: 1px;
+  box-shadow: none;
+}
+.compact-list-card h3 {
+  font-size: 21px;
+}
+.compact-list-card p {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.compact-list-card .tag-row {
+  margin-top: 10px;
+}
+.keypoint-strip {
+  margin-bottom: 26px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  padding: 26px 30px;
+}
+.keypoint-strip h2 {
+  margin: 6px 0 14px;
+  font-size: 30px;
+  line-height: 1.2;
+}
+.keypoint-strip ul {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.keypoint-strip li {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.34fr) 1fr;
+  gap: 16px;
+  border-top: 1px solid rgba(16, 24, 32, 0.1);
+  padding-top: 12px;
+}
+.keypoint-strip strong {
+  color: var(--accent-3);
+}
+.keypoint-strip span {
+  color: var(--muted);
+}
 @media (max-width: 880px) {
   .hero, .workflow, .article-body { grid-template-columns: 1fr; }
   .hero { min-height: auto; padding-top: 34px; }
@@ -204,10 +270,15 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px 56px; }
   .nav-actions { gap: 10px; }
   .nav-actions a { display: none; }
   .hero-copy h1, .article-hero h1 { font-size: 40px; }
+  .compact-hero { padding-top: 26px; }
+  .compact-hero .hero-copy h1 { font-size: 38px; }
   .hero-copy p:not(.eyebrow), .article-hero > p:not(.eyebrow) { font-size: 17px; }
   .article-card { display: block; padding: 22px; }
+  .compact-list-card { padding: 18px; }
+  .compact-list-card h3 { font-size: 20px; }
   .read-link { display: inline-flex; align-items: center; margin-top: 18px; }
   .grid-section { grid-template-columns: 1fr; }
-  .full-article, .workflow, .source-box, .article-hero, .summary-panel { padding: 24px; }
+  .full-article, .workflow, .source-box, .article-hero, .summary-panel, .keypoint-strip { padding: 24px; }
+  .keypoint-strip li { grid-template-columns: 1fr; gap: 4px; }
   .article-nav { display: grid; }
 }
