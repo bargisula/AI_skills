@@ -29,20 +29,13 @@
     </header>
 
     <main>
-      <section class="hero compact-hero" id="home">
-        <div class="hero-copy">
-          <p class="eyebrow">GPT / Claude / Codex / Agent / Skill</p>
-          <h1>AI 技術工作流筆記</h1>
-          <p>整理 Codex、Claude、GPT、Agent、Skill 的實戰用法，把文章變成可複用的工作流。</p>
-          <div class="hero-actions">
-            <a class="primary-link" href="#articles">看最新文章</a>
-            <a class="secondary-link" href="#taxonomy">瀏覽分類</a>
-          </div>
-        </div>
-        <div class="hero-panel" aria-label="網站定位">
-          <span>Library</span>
-          <strong>摘要、重點、流程、來源，固定格式累積。</strong>
-          <p>首頁快速掃描，單篇頁保留完整脈絡。</p>
+      <section class="hero" id="home">
+        <p class="eyebrow">GPT / Claude / Codex / Agent / Skill</p>
+        <h1>AI 技術工作流筆記</h1>
+        <p>整理 Codex、Claude、GPT、Agent、Skill 的實戰用法，把文章變成可複用的工作流。</p>
+        <div class="hero-actions">
+          <a class="primary-link" href="#articles">看最新文章</a>
+          <a class="secondary-link" href="#taxonomy">瀏覽分類</a>
         </div>
       </section>
 
@@ -70,7 +63,8 @@
         <ol>
           <li><strong>你貼資料：</strong>新聞、文章、截圖、連結或自己的筆記。</li>
           <li><strong>我補來源：</strong>查原文與相關資料，但不整篇搬運。</li>
-          <li><strong>寫入資料庫：</strong>新增到 <code>data/articles.js</code>。</li>
+          <li><strong>寫入資料庫：</strong>在 <code>data/articles/</code> 新增一個 JSON 檔，加進 <code>index.json</code> 順序清單。</li>
+          <li><strong>建置：</strong>跑 <code>node scripts/build-articles.mjs</code>，自動產生 <code>data/articles.js</code> 與 <code>sitemap.xml</code>。</li>
           <li><strong>自動呈現：</strong>首頁多一張卡片，文章頁自動渲染。</li>
           <li><strong>部署更新：</strong>GitHub 更新後 Cloudflare Pages 自動發布。</li>
         </ol>

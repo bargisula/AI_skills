@@ -20,8 +20,20 @@ exit 0
 ## PWA 功能
 
 - `manifest.webmanifest`：手機安裝名稱、主題色、icon
-- `sw.js`：離線快取首頁與核心資源
-- `icons/icon.svg`：App icon
+- `sw.js`：離線快取首頁與核心資源，`skipWaiting`/`clients.claim` 讓更新即時生效
+- `icons/icon.svg`、`icons/icon-192.png`、`icons/icon-512.png`、`icons/apple-touch-icon.png`：App icon
+
+## 新增文章
+
+1. 在 `data/articles/` 新增一個 `<id>.json`（欄位參考同目錄下既有檔案）
+2. 把 `id` 加進 `data/articles/index.json`（陣列順序 = 首頁顯示順序）
+3. 執行：
+
+```bash
+node scripts/build-articles.mjs
+```
+
+這會重新產生 `data/articles.js`（實際被 `index.html`/`article.html`載入的檔案）與 `sitemap.xml`。commit 時記得把 JSON 原始檔跟這兩個產生出來的檔案一起加進去。
 
 ## 來源
 

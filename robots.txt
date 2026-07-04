@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bargisula-ai-skills.pages.dev/sitemap.xml
