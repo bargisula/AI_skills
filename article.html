@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101820" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="AI Skills" />
+    <meta name="description" content="AI Skills 單篇文章。" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icons/icon.svg" />
+    <link rel="apple-touch-icon" href="./icons/icon.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>AI Skills 文章</title>
+  </head>
+  <body data-page="article">
+    <header class="site-header">
+      <nav class="nav">
+        <a class="brand" href="./" aria-label="AI Skills 首頁">
+          <span class="brand-mark">AI</span>
+          <span><strong>AI Skills</strong><small>知識工作流資料庫</small></span>
+        </a>
+        <div class="nav-actions">
+          <a href="./#articles">文章</a>
+          <a href="./#workflow">工作流</a>
+          <button class="install-button" id="installButton" hidden>安裝</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <article class="article-page" id="articlePage" aria-live="polite"></article>
+    </main>
+
+    <script src="./data/articles.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
