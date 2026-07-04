@@ -1,9 +1,11 @@
-const CACHE_NAME = "ai-skills-pwa-v1";
+const CACHE_NAME = "ai-skills-pwa-v2";
 const ASSETS = [
   "./",
   "./index.html",
+  "./article.html",
   "./styles.css",
   "./app.js",
+  "./data/articles.js",
   "./manifest.webmanifest",
   "./icons/icon.svg"
 ];
