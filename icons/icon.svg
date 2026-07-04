@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <rect width="512" height="512" fill="#101820"/>
-  <text x="256" y="320" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="300"><tspan fill="#f7f4ee">A</tspan><tspan fill="#d46a2c">I</tspan></text>
+  <text x="256" y="305" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="200" fill="#f7f4ee">Ai</text>
+  <text x="256" y="407" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="72" letter-spacing="8" fill="#d46a2c">skill</text>
 </svg>
