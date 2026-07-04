@@ -1,5 +1,105 @@
 window.AI_SKILLS_ARTICLES = [
   {
+    "id": "hermes-agent-architecture",
+    "title": "Hermes Agent 核心架構：學習迴圈怎麼運作？",
+    "date": "2026.07.04",
+    "sourceDate": "2026.04.14",
+    "category": "AI Agent 架構",
+    "tags": [
+      "Hermes Agent",
+      "Agent",
+      "自主學習",
+      "架構"
+    ],
+    "sourceTitle": "Hermes Agent 完整實測：自我進化 AI Agent 架構，全面取代 OpenClaw！",
+    "sourceUrl": "https://rain.tips/2026/04/14/hermes-agent-%E5%AE%8C%E6%95%B4%E5%AF%A6%E6%B8%AC%EF%BC%9A%E8%87%AA%E6%88%91%E9%80%B2%E5%8C%96-ai-agent-%E6%9E%B6%E6%A7%8B%EF%BC%8C%E5%85%A8%E9%9D%A2%E5%8F%96%E4%BB%A3-openclaw%EF%BC%81/",
+    "summary": "Hermes Agent 最大的特色是內建「學習迴圈」：任務結束後寫入完整紀錄、下次執行前先查歷史經驗、同一套流程成功 3 次以上就自動變成可重複使用的技能，還會透過使用者建模記住你的偏好。整體架構分成介面、訊息路由、規劃執行、記憶、工具、資料六層，讓它不只是回答問題，而是真的會「越用越懂你」的自主代理人。",
+    "keyPoints": [
+      {
+        "title": "完整任務紀錄",
+        "text": "每次任務結束，Agent 會寫入包含工具執行結果、錯誤訊息、耗時資料的結構化紀錄，不是單純的日誌。"
+      },
+      {
+        "title": "先查歷史經驗再執行",
+        "text": "執行新任務前，會先搜尋過去的失敗紀錄，避免重蹈覆轍，而不是每次都從零開始。"
+      },
+      {
+        "title": "成功流程自動變技能",
+        "text": "同一套流程成功執行 3 次以上，系統會自動把它抽象成可重複使用的技能（依 agentskills.io 標準寫成 Markdown），可以版本控管、分享。"
+      },
+      {
+        "title": "跨會話記住使用者偏好",
+        "text": "透過 Honcho 使用者建模，記住你偏好用 CLI 還是 GUI、慣用的技術選型、曾經拒絕過的做法。"
+      },
+      {
+        "title": "六層分層架構",
+        "text": "從上到下分成 Presentation（介面）、Gateway（訊息路由）、Agent（規劃執行）、Memory（短中長期記憶）、Tool（60+ 工具）、Data（資料儲存）六層。"
+      }
+    ],
+    "take": "適合想搞懂「為什麼 Hermes Agent 用起來感覺越用越懂你」背後原理的人；如果只是想動手裝起來用，看下一篇安裝教學就好。"
+  },
+  {
+    "id": "hermes-agent-setup-guide",
+    "title": "Hermes Agent 怎麼安裝與設定？5 個設計理念 + 實際指令",
+    "date": "2026.07.04",
+    "sourceDate": "2026.05.01",
+    "category": "AI Agent 架構",
+    "tags": [
+      "Hermes Agent",
+      "Agent",
+      "安裝教學",
+      "指令"
+    ],
+    "sourceTitle": "5 key design points + 4 steps to get started: How do I see Hermes Agent as more than just another CLI Agent?",
+    "sourceUrl": "https://ai-chain.tw/en/blog/hermes-agent-5-designs-4-getting-started-steps/",
+    "summary": "Hermes Agent 的設計理念是把 Agent 當成常駐服務，而不是本機工具：部署在 VPS 或雲端、透過 Telegram 等訊息平台喚醒、模型可以隨時換不綁死單一供應商，目標是做出一個結合記憶、技能、排程、gateway 的最小可行「作業系統」，而不是優化單次對話。實際安裝只需要一行指令，接著設定模型、跑一個小任務驗證、開沙盒模式、確認對話能跨 session 接續即可上手。",
+    "keyPoints": [
+      {
+        "title": "Remote-first 架構",
+        "text": "Agent 不綁在本機，而是當成常駐服務部署在 VPS、GPU 叢集或 serverless 環境，透過 Telegram 等訊息平台喚醒。"
+      },
+      {
+        "title": "學習迴圈優先於記憶",
+        "text": "重點不是把記憶當附加功能，而是把重複出現的工作流程直接轉換成可重複使用的程式。"
+      },
+      {
+        "title": "訊息平台是主要入口",
+        "text": "直接整合 Telegram、Discord、Slack、WhatsApp 等平台作為主要操作入口，減少團隊導入的摩擦。"
+      },
+      {
+        "title": "模型可隨時切換",
+        "text": "架構把基礎設施跟模型選擇分開，用指令就能換供應商，不綁死單一模型。"
+      },
+      {
+        "title": "當成一個小型作業系統",
+        "text": "目標不是優化單次對話，而是把記憶、技能、排程、gateway、遠端執行整合成一個可長期運作的最小可行系統。"
+      }
+    ],
+    "workflow": [
+      {
+        "step": "安裝",
+        "prompt": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash"
+      },
+      {
+        "step": "設定模型（至少要 64K context window）",
+        "prompt": "hermes model"
+      },
+      {
+        "step": "用 TUI 介面實際測試一個任務",
+        "prompt": "hermes --tui"
+      },
+      {
+        "step": "開啟沙盒模式，避免指令直接動到本機",
+        "prompt": "hermes config set terminal.backend docker"
+      },
+      {
+        "step": "確認對話可以跨 session 接續",
+        "prompt": "hermes --continue"
+      }
+    ],
+    "take": "適合已經想動手裝起來用的人；先裝好、設定模型、跑一個小任務驗證，再決定要不要接訊息平台或排程。想先了解背後原理的話，看前一篇架構解析。"
+  },
+  {
     "id": "chatgpt-23-use-cases-5-categories",
     "title": "ChatGPT 23 種實用情境，怎麼歸類成 5 大類？",
     "date": "2026.07.04",
