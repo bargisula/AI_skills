@@ -1,5 +1,53 @@
 window.AI_SKILLS_ARTICLES = [
   {
+    "id": "codex-skills-plugins-automation-overview",
+    "title": "Codex 一支影片看懂 Skill、外掛與自動化：從表格到架站全包辦",
+    "date": "2026.07.05",
+    "sourceDate": "2026.05.20",
+    "category": "Codex 案例",
+    "tags": [
+      "Codex",
+      "Skill",
+      "Plugin",
+      "自動化"
+    ],
+    "sourceTitle": "一個 AI 助手打趴整套 Office 軟體！超強 Codex 從表格簡報、合併列印、架設網站全部一手包辦！",
+    "sourceUrl": "https://www.youtube.com/watch?v=W5ymBPi53Tw",
+    "summary": "這支影片整理了 Codex 這類 AI 助手目前能做到的完整範圍：從打包 SOP 的 Skill、可直接部署網站或寄信的 Plugin，到能操作瀏覽器、排程自動檢查信箱的進階自動化功能，幾乎可以取代大半套 Office 軟體的工作。特別值得一提的是介面設計技能：這類技能通常不是讓 AI 亂生成網頁，而是先禁用常見的 AI 陳腔濫調（紫粉漸層、預設字體、假見證），用 OKLCH 色彩系統跟預先宣告的設計規範，讓輸出的儀表板真的有設計感，不是一眼就看出來是 AI 做的。",
+    "keyPoints": [
+      {
+        "title": "Skill 是打包好的 SOP",
+        "text": "技能把重複性任務的標準作業流程包起來，需要時才觸發，不用一直佔用 AI 的思考空間；可以是專案層級（例如整理攤位申請表、自動重新命名並登記到 Excel）或全域層級（例如通用的 Word 表格排版規範）。"
+      },
+      {
+        "title": "Frontend Design 技能能做出真正有設計感的介面",
+        "text": "儀表板/介面設計技能常見的做法是先建立「反陳腔濫調清單」——禁用紫粉漸層、Inter 等預設字體、假造的使用者見證，改用 OKLCH 這種感知均勻的色彩系統，並在動工前先宣告好設計 tokens（配色、字體、間距），出一版 v0 草稿讓人確認方向，而不是一次生成整個網頁。"
+      },
+      {
+        "title": "外掛程式是更完整的工具包",
+        "text": "簡報外掛可以依提示詞直接生成多頁 PPT；Gmail 外掛能讀取信箱，依不同身份客製化草擬邀請信並存進草稿夾；Netlify 外掛能把寫好的網站程式碼直接推上伺服器正式部署。"
+      },
+      {
+        "title": "進階自動化：電腦操作、排程、規劃模式",
+        "text": "Computer Use 讓 AI 像真人一樣操作瀏覽器（例如自動開網站、移動游標填留言表單）；自動化排程可以讓 AI 每天固定時間檢查信箱有沒有新信、更新 Excel；規劃模式會在動工前先擬定完整計畫、問答釐清需求，而不是直接開始寫。"
+      },
+      {
+        "title": "AGENTS.md 是專案的操作守則",
+        "text": "放在專案資料夾裡的 Markdown 文件，讓 AI 每次對話都能讀到必要的背景資訊與規則，搭配自訂指令與記憶功能記住使用者偏好，減少每次都要重新交代一遍的麻煩。"
+      }
+    ],
+    "workflow": [
+      "去 skill marketplace（例如 skillstore.io、smithery.ai）或官方 GitHub 找 frontend-design / web-design-skill，下載後放進 Claude Code 或 Codex 的 skills 資料夾。",
+      {
+        "step": "先用這個 prompt 測試，確認它會先出草稿而不是直接生成整頁",
+        "prompt": "請用 frontend-design skill 幫我設計一個數據儀表板，先給我 v0 草稿版面配置跟設計 tokens（配色、字體、間距），不要直接寫完整程式碼，我確認方向後再繼續。"
+      },
+      "檢查回覆有沒有先宣告設計系統（顏色、字型、間距）；沒有的話代表這個技能沒有真的照完整流程走。",
+      "確認完稿沒有落入常見陳腔濫調：紫粉漸層、Inter/Roboto/Arial 預設字體、假造的使用者見證。"
+    ],
+    "take": "適合已經在用 Codex/Claude Code、想知道還有哪些功能沒用到的人；儀表板/介面設計這塊如果只是丟一句「幫我做個儀表板」，AI 很容易做出一眼假貨感的版面，關鍵在於先讓它宣告設計規範、出草稿，而不是直接生成完整頁面。"
+  },
+  {
     "id": "hermes-agent-architecture",
     "title": "Hermes Agent 核心架構：學習迴圈怎麼運作？",
     "date": "2026.07.04",
