@@ -1,0 +1,41 @@
+{
+  "id": "chatgpt-projects-pricing-vs-notebooklm",
+  "title": "ChatGPT Projects 免費版跟 Plus 版差在哪？跟 NotebookLM 怎麼選",
+  "date": "2026.07.05",
+  "sourceDate": "2026.07.03",
+  "category": "ChatGPT 進階",
+  "tags": ["ChatGPT", "Projects", "NotebookLM", "方案比較"],
+  "sourceTitle": "ChatGPT專案功能怎麼用？免費、Plus版差異、自訂指令範例、5步驟設定教學一次看",
+  "sourceUrl": "https://www.bnext.com.tw/article/91370/chatgpt-projects-tutorial",
+  "summary": "這篇文章補上了上一篇「Projects 怎麼寫」沒講的兩件事：免費版、Plus/Go、Pro/Enterprise 三個方案在檔案數與協作人數上的具體差異，以及 ChatGPT Projects 跟 NotebookLM 該怎麼分工——不是二選一，而是「生成新內容」用 Projects、「從指定來源精準摘要並附引用」用 NotebookLM。另外也整理了一套 5 步驟的實際設定流程。",
+  "keyPoints": [
+    {
+      "title": "三個方案的檔案與協作人數上限",
+      "text": "免費版每個 Project 最多 5 個檔案、5 位協作者；Plus/Go 版本 25 個檔案、10 位協作者；Pro/Enterprise 則到 40 個檔案、100 位協作者。"
+    },
+    {
+      "title": "Project 命名建議用「主題＋時間範圍」",
+      "text": "例如「Q3行銷企劃-2026」，比單純寫「行銷」更好搜尋跟辨識，Project 一多就不會找不到。"
+    },
+    {
+      "title": "自訂指令要包含五個要素",
+      "text": "角色設定、目標、資料優先順序、輸出格式、禁止事項——這跟我們前一篇文章提到的指令範本邏輯一致，算是業界通用的寫法。"
+    },
+    {
+      "title": "三種常見用途",
+      "text": "內容生產（維持品牌語氣一致）、市場研究（分析資料集）、學習準備（當學習助手），對應到不同職務的日常需求。"
+    },
+    {
+      "title": "跟 NotebookLM 的分工",
+      "text": "ChatGPT Projects 強項是生成新內容；NotebookLM 強項是從指定來源精準摘要並附上引用出處。兩者用途不同，不是二選一，看任務是「要生成」還是「要溯源摘要」來選工具。"
+    }
+  ],
+  "workflow": [
+    "先幫 Project 取名，用「主題＋時間範圍」的格式，例如「Q3行銷企劃-2026」，比單純的關鍵字好搜尋。",
+    "寫自訂指令，至少包含角色設定、目標、資料優先順序、輸出格式、禁止事項這五個要素。",
+    "上傳參考文件（PDF、試算表、Word），數量上限依方案而定（免費 5 個／Plus 25 個／Pro 40 個）。",
+    "在 Project 裡直接開新對話，不用重複交代背景，AI 會沿用已上傳的資料與指令。",
+    "如果之前已經在一般對話裡討論過同樣主題，可以把舊對話轉移進這個 Project，累積上下文而不是從零開始。"
+  ],
+  "take": "跟前一篇「Projects 怎麼寫」互補：那篇講怎麼寫指令跟管理檔案版本，這篇補上方案限制的具體數字，跟什麼時候該用 NotebookLM 而不是 ChatGPT Projects。"
+}
