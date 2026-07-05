@@ -1,5 +1,44 @@
 window.AI_SKILLS_ARTICLES = [
   {
+    "id": "opc-ai-agent-tools-2026",
+    "title": "一人公司熱門 AI Agent 盤點：從「人用工具」到「人管智能體」",
+    "date": "2026.07.05",
+    "sourceDate": "2026.02.26",
+    "category": "AI Agent 架構",
+    "tags": [
+      "Agent",
+      "一人公司",
+      "OPC",
+      "自動化"
+    ],
+    "sourceTitle": "OPC（一人公司）：AI 时代的组织革命，一个人如何调度\"千军万马\"？",
+    "sourceUrl": "https://www.cnblogs.com/informatics/p/19642782",
+    "summary": "這篇文章的核心論點是「一個人＋一套 AI 智能體＝一家公司」：傳統企業存在是因為市場交易成本高於內部協調成本，AI 大幅降低了市場摩擦，讓個人有能力像組織一樣運作。文章特別強調一人公司（OPC）跟傳統自由接案的關鍵差異，不在於工具好不好用，而在於是「人用工具」還是「人管智能體」——前者還是自己動手做每一步，後者是把任務交給會自主規劃、執行、迭代的 agent 團隊。目前熱門的自動化/agent 平台包括 OpenClaw（開源個人助理）、Dify、Coze、n8n；各功能領域也各有代表工具。中國目前「一人公司」數量已破 1,600 萬間，佔企業總數 27.4%，典型工具棧月成本約人民幣 130-260 元。",
+    "keyPoints": [
+      {
+        "title": "核心論點：交易成本重構",
+        "text": "傳統上企業存在是因為市場交易成本高於內部協調成本；AI 大幅降低市場摩擦，讓個人不需要團隊也能承接原本需要組織才能完成的工作。"
+      },
+      {
+        "title": "關鍵差異：人用工具 vs 人管智能體",
+        "text": "自由接案者是自己動手做每一步（人用工具）；真正的 OPC 是把任務交給會自主規劃、執行、迭代的 agent 團隊去做，自己負責調度跟決策（人管智能體）。"
+      },
+      {
+        "title": "各功能領域代表工具",
+        "text": "開發：Cursor、Windsurf、GitHub Copilot；設計：Midjourney、DALL-E、Figma AI；內容：ChatGPT、Claude、Jasper；影片：Runway、Pika、可靈、Seedance。"
+      },
+      {
+        "title": "自動化/agent 平台",
+        "text": "OpenClaw（開源個人助理，前身是 Clawdbot／Moltbot，我們前面深挖過的 Hermes Agent 也屬於同個生態）、Dify（開源 LLM 應用開發平台）、Coze（字節跳動出品，介面化組 bot）、n8n（工作流自動化，很多人拿來串 Telegram、LLM、GitHub）。"
+      },
+      {
+        "title": "規模與成本數據",
+        "text": "中國「一人公司」數量截至 2025 年 6 月已破 1,600 萬間，佔企業總數 27.4%；典型工具棧月成本約人民幣 130-260 元，對比請一位員工的成本大約是 1/20。"
+      }
+    ],
+    "take": "我目前的 OPC 是虛擬的——只有一顆 LLM 在對話，還是「人用工具」的階段，沒有主控器真正去操作、執行、調度。這篇文章點出的「人用工具」跟「人管智能體」的分界，剛好可以當作自我檢查的座標：什麼時候我手上這套東西才算真正跨過去，而不是還在跟 AI 聊天。這是出於對這項技術的研究興趣，不是真的要開公司。"
+  },
+  {
     "id": "chatgpt-projects-pricing-vs-notebooklm",
     "title": "ChatGPT Projects 免費版跟 Plus 版差在哪？跟 NotebookLM 怎麼選",
     "date": "2026.07.05",
