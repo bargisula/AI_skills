@@ -1,5 +1,67 @@
 window.AI_SKILLS_ARTICLES = [
   {
+    "id": "short-prompts-loop-engineering-claude-harness-2026",
+    "title": "提示詞正在變短：從長 prompt 到 Claude Harness 與 Loop Engineering",
+    "date": "2026.07.09",
+    "sourceDate": "2026.06-07",
+    "category": "Prompt / Agent",
+    "tags": [
+      "Claude",
+      "Prompt",
+      "Harness",
+      "Loop Engineering",
+      "Agent"
+    ],
+    "sourceTitle": "數位時代：Anthropic 工程師談 Claude harness（補充 Times of India 與 arXiv 研究）",
+    "sourceUrl": "https://www.bnext.com.tw/article/91455/anthropic-engineer-claude-harness",
+    "summary": "最近提示詞的變化，不是大家突然不需要 prompt，而是長篇咒語式提示詞的價值下降了。新的方向是：人只下短而清楚的目標，真正複雜的上下文、工具、檢查、重試、權限與驗證，交給 harness 或 loop 處理。Boris Cherny 對 Claude Code 的說法可以理解成：未來工程師不是一直手寫 prompt，而是在設計一套會替 agent 產生 prompt、檢查結果、持續迭代的工作迴圈。",
+    "keyPoints": [
+      {
+        "title": "從長 prompt 變成短目標",
+        "text": "以前常見做法是把角色、限制、格式、步驟全部塞進一段長 prompt；現在更有效的做法，是用短目標描述要完成什麼，讓系統層、工具層和流程層補上上下文。"
+      },
+      {
+        "title": "Prompt 的責任被 harness 接走",
+        "text": "Agent harness 不是單純的 prompt 模板，而是包住模型的執行層：它負責選 context、開工具、記狀態、跑驗證、記錄錯誤，讓模型不只是回答，而是能完成任務。"
+      },
+      {
+        "title": "Loop engineering 取代反覆追問",
+        "text": "Boris Cherny 談到的 loop engineering，重點是讓 AI 代理人自己產生與修正 prompt；人類從逐步下指令，改成設計一個會反覆執行、檢查、修正的迴圈。"
+      },
+      {
+        "title": "少寫不是隨便寫",
+        "text": "短 prompt 不等於模糊 prompt。有效短 prompt 仍要說清楚任務、輸出、邊界與驗收條件，只是不要把所有細節都塞在單次對話裡。"
+      },
+      {
+        "title": "最近研究也支持：prompt 只是系統的一部分",
+        "text": "Scrum 題庫研究顯示，引用來源的提示比單純 zero-shot 更穩；forecasting 研究則指出，多數 prompt 小修小補對複雜預測幫助有限。這代表可靠性不能只靠文字技巧，要靠資料、驗證與流程。"
+      }
+    ],
+    "workflow": [
+      {
+        "step": "舊寫法：長 prompt 一次塞滿",
+        "prompt": "你是一位頂尖顧問，請用專業但易懂的語氣，按照背景、問題、分析、建議、風險、結論的格式，幫我完整分析 Claude harness 與提示詞趨勢，請不要遺漏任何重點。"
+      },
+      {
+        "step": "新寫法：短目標 + 明確交付物",
+        "prompt": "整理 Claude harness 與提示詞變短的趨勢，寫成一篇給一般工作者看的 1200 字文章，重點放在實務工作流，不要寫成技術論文。"
+      },
+      {
+        "step": "把限制拆成驗收條件",
+        "prompt": "完成後請自我檢查三件事：一、是否有解釋 harness 是什麼；二、是否有說明為什麼 prompt 變短；三、是否給出一般人能照做的提示詞範例。"
+      },
+      {
+        "step": "把來源檢查獨立出來",
+        "prompt": "請列出文章中需要來源支撐的主張，逐一標註來源。沒有來源的地方請改寫成我的判斷，不要寫成確定事實。"
+      },
+      {
+        "step": "變成可重複 loop",
+        "prompt": "之後每篇 AI 工具文章都照這個流程：搜尋來源、寫摘要、抽 5 個重點、補一段實務工作流、做來源檢查、再寫入 PWA。"
+      }
+    ],
+    "take": "我的判斷是：提示詞工程沒有消失，但它正在下沉。以前我們把 prompt 當成一段魔法文字；現在更像產品規格的一部分。真正有價值的不是把提示詞寫得很長，而是把短指令放進一個會選資料、叫工具、檢查結果、重試修正的 harness。對一般使用者來說，最實用的改法是：不要再追求萬能長 prompt，改成「一句短目標 + 交付物格式 + 驗收條件」。"
+  },
+  {
     "id": "gpt-powerpoint-agent-workflow-2026",
     "title": "GPT 與 PPT 結合的新方向：從自動生成簡報，到 PowerPoint Agent 工作流",
     "date": "2026.07.08",
