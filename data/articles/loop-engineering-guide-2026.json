@@ -1,0 +1,62 @@
+{
+  "id": "loop-engineering-guide-2026",
+  "title": "Loop Engineering 是什麼：從寫 Prompt 到設計會自我修正的工作迴圈",
+  "date": "2026.07.09",
+  "sourceDate": "2026.07.06",
+  "category": "Agent 工作流",
+  "tags": [
+    "Loop Engineering",
+    "Agent",
+    "Prompt",
+    "Claude Code",
+    "Codex"
+  ],
+  "sourceTitle": "MapleFeather：迴圈工程是什麼？從寫 Prompt 到設計 Loop",
+  "sourceUrl": "https://maplefeather.com/article/loop-engineering-guide-2026",
+  "summary": "Loop Engineering 的重點不是把 prompt 寫得更漂亮，而是把「下指令、看結果、修正、再試一次」這件事變成一個可重複、可驗證、可停止的工作迴圈。最近 Boris Cherny、Peter Steinberger、Addy Osmani 等人談到的 loop，核心都是同一件事：人不再一步步手動提示 agent，而是設計一套會替 agent 派工、檢查、重試、收斂的系統。真正可用的 loop 必須有目標、驗證、停止條件與成本控制，否則只是把錯誤自動放大。",
+  "keyPoints": [
+    {
+      "title": "Prompt 管一次輸出，Loop 管整個過程",
+      "text": "Prompt Engineering 解決的是「這次要怎麼問」；Loop Engineering 解決的是「如果結果不對，系統要怎麼自己檢查、重試、停止」。"
+    },
+    {
+      "title": "核心流程是探索、規劃、執行、驗證、迭代",
+      "text": "一個基本 loop 會先讀狀態、產生計畫、執行任務、跑檢查，沒通過就把錯誤帶回下一輪；通過才交付。"
+    },
+    {
+      "title": "沒有驗證，就不要急著上 loop",
+      "text": "Loop 最適合有明確檢查標準的任務，例如測試是否通過、資料是否去重、連結是否有效；如果只能靠人的品味判斷，就不適合全自動迴圈。"
+    },
+    {
+      "title": "停止條件比聰明模型更重要",
+      "text": "可靠的 loop 需要最多重試次數、token 預算、連續無改善就停止等規則；不然它會在你沒注意時一直燒 token。"
+    },
+    {
+      "title": "它是 prompt、context、harness 之上的新一層",
+      "text": "arXiv 研究把 loop specification 定義成一個有 trigger、goal、verification、stopping rule、memory 的可重複 artifact；它不是取代 prompt，而是把 prompt 放進更大的執行系統裡。"
+    }
+  ],
+  "workflow": [
+    {
+      "step": "先不要自動化全部，只挑一個小任務",
+      "prompt": "請幫我挑出這個工作流中最適合做成 loop 的一小段。條件是：每週重複發生、錯了可以重跑、能用明確規則檢查結果。"
+    },
+    {
+      "step": "寫出 loop specification",
+      "prompt": "請把這個任務整理成 loop specification：trigger、goal、input、execution steps、verification、stopping rule、memory。每一項都要具體，不要寫抽象原則。"
+    },
+    {
+      "step": "先設驗證，不先追求自動執行",
+      "prompt": "請先設計驗證條件：什麼情況算通過、什麼情況算失敗、失敗訊息要怎麼回饋給下一輪。沒有自動驗證的部分請標記為需要人工確認。"
+    },
+    {
+      "step": "加上停止線與預算",
+      "prompt": "請為這個 loop 設定安全限制：最多重試 5 次、最多使用 3 個來源、超過 20 分鐘停止、連續 2 次沒有改善就停止並回報原因。"
+    },
+    {
+      "step": "跑完後沉澱成規則",
+      "prompt": "這次 loop 跑完後，請輸出三件事：完成結果、失敗或重試紀錄、下次可以改進的 loop 規則。"
+    }
+  ],
+  "take": "我的判斷是，Loop Engineering 會成為 agent 工作流的核心概念，但它不適合一開始就拿來做全自動創作。最好的切入點是那些『重複、可驗證、錯了能重跑』的小工作，例如檢查來源、去除重複資料、跑測試、整理格式。對一般使用者來說，先不要追求全自動代理人，先學會設計一個最小 loop：一個目標、一個檢查、一條停止線。這比寫一大段萬能 prompt 更有價值。"
+}

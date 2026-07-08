@@ -1,4 +1,4 @@
-const CACHE_NAME = "ai-skills-pwa-v18";
+const CACHE_NAME = "ai-skills-pwa-v19";
 const ASSETS = [
   "./",
   "./index.html",
