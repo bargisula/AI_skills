@@ -1,5 +1,67 @@
 window.AI_SKILLS_ARTICLES = [
   {
+    "id": "gpt-powerpoint-agent-workflow-2026",
+    "title": "GPT 與 PPT 結合的新方向：從自動生成簡報，到 PowerPoint Agent 工作流",
+    "date": "2026.07.08",
+    "sourceDate": "2026.05-06",
+    "category": "AI 簡報工作流",
+    "tags": [
+      "GPT",
+      "PowerPoint",
+      "Copilot",
+      "Office Agent",
+      "簡報"
+    ],
+    "sourceTitle": "綜合來源：Microsoft 365 Copilot、PowerPoint Agent 與 PPT-Eval 研究",
+    "sourceUrl": "https://www.windowscentral.com/microsoft/microsoft-office/new-copilot-keyboard-shortcuts-are-coming-to-microsoft-365",
+    "summary": "GPT 與 PPT 的結合正在從「幫我生幾頁投影片」走向「讓 AI 進入 PowerPoint 工作流程」：Microsoft 正在把 Copilot 入口整合進 Word、Excel、PowerPoint；PowerPoint Agent 則把簡報製作拆成規劃、生成、檢查、修正的流程；研究端也開始用 PPT-Eval 這類基準測試衡量 AI 是否真的會操作簡報，而不只是產出文字大綱。",
+    "keyPoints": [
+      {
+        "title": "入口變近：Copilot 會更像 Office 的內建操作層",
+        "text": "Microsoft 正在統一 Microsoft 365 裡的 Copilot 入口，包含 PowerPoint；使用者可以用快捷鍵或畫面上的 Copilot 按鈕，把 AI 叫進目前正在編輯的文件或簡報。"
+      },
+      {
+        "title": "角色改變：從聊天機器人變成簡報代理人",
+        "text": "PowerPoint Agent 的方向不是只回覆文字，而是接收自然語言任務後，協助建立簡報結構、產生頁面、檢查內容一致性，並把結果輸出成 Office 檔案。"
+      },
+      {
+        "title": "真正難點在版面與修正，不是文字生成",
+        "text": "簡報任務同時牽涉文字、圖像、版面、順序與主題一致性；PPT-Eval 這類研究指出，現有電腦使用型 agent 在 PowerPoint 任務上仍有明顯挑戰。"
+      },
+      {
+        "title": "企業價值在工作流，而不是單張投影片",
+        "text": "可用的 AI 簡報流程應該包含資料蒐集、受眾定位、章節規劃、投影片生成、人工審稿、版本管理，而不是只追求一次生成漂亮模板。"
+      },
+      {
+        "title": "下一步會是人機協作的簡報工廠",
+        "text": "人負責判斷主張、取捨內容與確認商業語氣；AI 負責把資料轉成草稿、補齊頁面、統一格式與反覆修改。"
+      }
+    ],
+    "workflow": [
+      {
+        "step": "先給 AI 明確簡報任務",
+        "prompt": "請幫我把「GPT 與 PPT 結合的最新發展」整理成 8 頁簡報大綱，受眾是一般企業工作者，目標是讓他們知道 AI 簡報工具正在從自動生成走向 Agent 工作流。"
+      },
+      {
+        "step": "要求先規劃，不要直接做頁面",
+        "prompt": "先不要產生投影片。請先列出簡報主線、每頁標題、每頁一句話重點、需要補充的資料來源，以及哪幾頁適合放流程圖或比較表。"
+      },
+      {
+        "step": "把資料轉成頁面草稿",
+        "prompt": "根據剛才的大綱，請產生每一頁的投影片文案。每頁最多 5 個 bullet，每個 bullet 不超過 18 個中文字，語氣要像企業內訓教材。"
+      },
+      {
+        "step": "讓 AI 做自我檢查",
+        "prompt": "請檢查這份簡報草稿是否有三個問題：一、每頁是否只有一個主張；二、前後邏輯是否連貫；三、有沒有把工具功能誇大成已經完全自動化。請列出需要修改的頁面。"
+      },
+      {
+        "step": "最後再交給 PowerPoint 或設計工具排版",
+        "prompt": "請把修正後內容轉成 PowerPoint 可用的頁面結構：頁碼、頁面標題、主文案、建議視覺元素、講者備註。"
+      }
+    ],
+    "take": "這則題目值得追蹤，因為它代表 GPT 類工具正在進入 Office 的實際工作現場。短期最可用的做法不是期待 AI 一次做出完美簡報，而是把它當成「簡報助理」：先規劃、再生成、再檢查、再交給人修。長期如果 PowerPoint Agent 這類工具成熟，簡報製作會從手工排版，轉成管理一條 AI 協作流程。"
+  },
+  {
     "id": "opc-ai-agent-tools-2026",
     "title": "一人公司熱門 AI Agent 盤點：從「人用工具」到「人管智能體」",
     "date": "2026.07.05",
