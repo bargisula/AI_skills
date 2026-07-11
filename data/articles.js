@@ -2,7 +2,7 @@ window.AI_SKILLS_ARTICLES = [
   {
     "id": "ai-coding-git-fundamentals-beginners",
     "title": "AI Coding 新手該懂的 6 個 Git 名詞：不用學完整系統，先保住方向盤",
-    "date": "2026.07.09",
+    "date": "2026.07.11",
     "sourceDate": "2026.07.09",
     "category": "AI Coding 入門",
     "tags": [
@@ -54,7 +54,7 @@ window.AI_SKILLS_ARTICLES = [
   {
     "id": "gpt-5-6-codex-chatgpt-integration",
     "title": "GPT-5.6 上線：Codex 併入 ChatGPT，是不是要把所有用戶都變成「代理式工作者」？",
-    "date": "2026.07.09",
+    "date": "2026.07.11",
     "sourceDate": "2026.07.09",
     "category": "AI 產業動態",
     "tags": [
