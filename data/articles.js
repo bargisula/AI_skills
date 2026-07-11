@@ -1,5 +1,97 @@
 window.AI_SKILLS_ARTICLES = [
   {
+    "id": "ai-coding-git-fundamentals-beginners",
+    "title": "AI Coding 新手該懂的 6 個 Git 名詞：不用學完整系統，先保住方向盤",
+    "date": "2026.07.09",
+    "sourceDate": "2026.07.09",
+    "category": "AI Coding 入門",
+    "tags": [
+      "Git",
+      "AI Coding",
+      "新手教學",
+      "Codex"
+    ],
+    "sourceTitle": "Codex 中文社群貼文：AI coding 初學者該懂的基礎名詞",
+    "sourceUrl": "https://www.facebook.com/groups/1713764039757273/",
+    "summary": "這篇整理 Codex 中文社群一則貼文的核心觀念：AI coding 新手不需要一開始就懂高階架構，但至少要懂 6 個 Git 基礎名詞——repo、branch、git status、diff、commit、rollback。這些詞的共通用途不是為了寫程式，是為了在讓 AI 代理動手改程式碼的過程中，讓人類始終保有「看得懂、擋得住、退得回去」的能力。核心提醒是：AI 說「已經修好了」不代表真的修好了，真正該相信的是 diff 顯示出來的實際差異，這跟我們前面討論的「模型看到的永遠是真實結果，不是自己的猜測」是同一個道理，只是這裡的「真實結果」換成了人類自己要去核對。",
+    "keyPoints": [
+      {
+        "title": "repo：先搞清楚自己在哪個專案資料夾",
+        "text": "repo 就是專案的完整倉庫——程式碼、設定檔、文件、測試、Git 版本紀錄全部在裡面。AI 說「我改好了」，改的東西一定在某個 repo 裡；讓 AI 開始大改之前，先用 `git remote -v` 或看資料夾路徑確認自己現在人在哪個專案，不要連自己在哪都沒搞清楚。"
+      },
+      {
+        "title": "branch：讓 AI 大改前，先開一個試驗區",
+        "text": "branch 是分支，可以想成跟主線分開的試驗區。小修補在主分支還好，但要讓 AI 做比較大範圍的修改時，先用 `git checkout -b 描述性名稱`（例如 `ai-refactor-auth`）開一個新分支再動手——試驗成功就合回主線，失敗也不會污染原本能跑的版本。"
+      },
+      {
+        "title": "git status：AI 動手前後都該看一次",
+        "text": "這個指令會告訴你目前在哪個 branch、哪些檔案被改了、哪些還沒被 Git 追蹤、repo 乾不乾淨。養成習慣：讓 AI 改檔前跑一次，改完後再跑一次——這是最低成本、卻最容易被新手跳過的檢查點。"
+      },
+      {
+        "title": "diff：AI 說完成，不代表真的完成",
+        "text": "diff 是修改前後的實際差異，`git diff` 看還沒 commit 的變動，`git diff --stat` 先看改動範圍有多大再決定要不要細看內容。AI 有沒有動到不該碰的檔案？有沒有順手改了其他功能？有沒有把測試刪掉或用繞過方式讓錯誤暫時不再出現？有沒有把可讀的程式碼改成更難懂的版本？這些問題只有看 diff 才有答案。新手不用一次看懂全部，先抓三件事：改了哪些檔案、每個檔案大概改了什麼、有沒有超出原本要求的範圍。"
+      },
+      {
+        "title": "commit：小步存檔，訊息要寫得未來看得懂",
+        "text": "一組修改確認可用就 commit 起來，之後出問題比較容易追到是哪一次造成的。比較安全的節奏是：小改一次→看 diff→跑測試→沒問題再 commit，而不是讓 AI 連續改好幾輪、改到最後自己都不知道哪一步開始壞掉。commit message 也要寫清楚在做什麼，不要每次都只寫 fix、update、change，那是留給未來的自己看不懂的坑。"
+      },
+      {
+        "title": "rollback：出事之前，先知道怎麼退回去",
+        "text": "rollback 是把錯誤修改撤回去的統稱，實際操作依情況不同：`git restore <檔名>` 還原單一檔案、`git revert <commit>` 安全地撤銷某次 commit（不改動歷史，適合已經推上遠端的情況）、`git reset` 則會動到歷史紀錄，效果更激烈，新手應該先避開，除非清楚知道自己在做什麼。新手不用一開始全部背起來，但每次讓 AI 大幅修改前，先問自己一句：如果這次改壞了，我知道怎麼退回原本狀態嗎？答案不確定，就先不要讓 AI 大改。"
+      }
+    ],
+    "workflow": [
+      "進入正確的 repo，用 `git remote -v` 或檢查資料夾路徑確認自己在哪個專案。",
+      "看目前在哪個 branch；要讓 AI 做較大範圍修改前，先 `git checkout -b` 開一個新分支。",
+      "跑一次 `git status`，記住目前的乾淨狀態。",
+      "讓 AI 在小範圍內修改，不要一次要求大改。",
+      "跑 `git diff`（或 `git diff --stat` 先看範圍），確認改動內容跟範圍符合預期。",
+      "問自己：如果這次改壞了，能不能用 `git restore`／`git revert` 退回去？確定可以才繼續。",
+      "確認沒問題後才 `git commit`，並寫清楚這次做了什麼。"
+    ],
+    "take": "這篇最有價值的地方不是名詞解釋本身（這些指令 Google 得到），是背後那個心法：這 6 個詞存在的唯一目的，是讓人類在 AI 動手改程式碼的過程裡，隨時保有「看得懂發生了什麼、擋得住不對勁的地方、退得回上一個能跑的狀態」的能力。跟我們前面聊 agent 原理時的結論剛好對上——AI 輸出的是一個宣稱，不是事實，diff 就是人類自己動手做的那個『比對真實結果』的步驟，Git 在這裡本質上是在幫人類補上 AI 本身沒有的那道驗證迴圈。"
+  },
+  {
+    "id": "gpt-5-6-codex-chatgpt-integration",
+    "title": "GPT-5.6 上線：Codex 併入 ChatGPT，是不是要把所有用戶都變成「代理式工作者」？",
+    "date": "2026.07.09",
+    "sourceDate": "2026.07.09",
+    "category": "AI 產業動態",
+    "tags": [
+      "GPT-5.6",
+      "Codex",
+      "ChatGPT",
+      "OpenAI",
+      "Agent"
+    ],
+    "sourceTitle": "OpenAI launches its new family of models with GPT-5.6",
+    "sourceUrl": "https://techcrunch.com/2026/07/09/openai-launches-its-new-family-of-models-with-gpt-5-6/",
+    "summary": "OpenAI 在 2026 年 7 月 9 日正式讓 GPT-5.6 全面上線，同時涵蓋 ChatGPT、Codex 跟 API 三個入口。這次推出三個模型分級（Sol／Terra／Luna），新增可平行開 4 個子代理處理複雜任務的 Ultra 模式，並同步推出企業向的「ChatGPT Work」。多篇報導都提到 Codex 的代理式工作能力正被整合進 ChatGPT 桌面版，讓一般聊天使用者也能直接用到原本只有 Codex 才有的多步驟任務執行能力。Codex 中文社群裡也有人（李東昇）把這次更新解讀為 OpenAI 想把「跟 AI 聊天」的使用者，逐步轉變成「把工作交給 AI 代理執行」的使用者，並認為這對 Anthropic 形成生態系等級的競爭壓力，不只是單一模型的比較。",
+    "keyPoints": [
+      {
+        "title": "三個模型分級：Sol／Terra／Luna",
+        "text": "Sol 是主力款，官方稱是目前最強的程式碼模型，token 使用效率比前代提升 54%；Terra 是中階選項；Luna 是最平價的版本，三者依任務複雜度跟預算分層使用。"
+      },
+      {
+        "title": "Ultra 模式：預設平行開 4 個子代理",
+        "text": "Ultra 模式會把可拆解的任務同時交給 4 個子代理平行處理，用更多 token 換取更好的結果跟更快的完成時間；官方明講這是「花更多錢換更多產出」的選項，不是省錢功能。ChatGPT Work 的 Ultra 僅開放 Pro／Enterprise 方案，Codex 的 Ultra 則是 Plus 以上方案才能用。"
+      },
+      {
+        "title": "ChatGPT Work：企業向的「代理式工作」入口",
+        "text": "跟 GPT-5.6 同步推出的新產品，定位是給企業團隊的工作夥伴，橫跨桌面、網頁、行動裝置，訴求從單純聊天問答，變成能讀取文件、串接工具、跑多步驟流程、直接產出可用成果。"
+      },
+      {
+        "title": "Codex 跟 ChatGPT 走向同一個入口",
+        "text": "多篇報導提到 Codex 的代理能力被逐步整合進 ChatGPT 桌面版介面，讓使用者可以在同一個 App 裡切換一般對話、ChatGPT Work、Codex，不需要另外學習或安裝一個新產品才能用到「代理式工作」的能力。"
+      },
+      {
+        "title": "社群觀點：這對 Anthropic 是不是生態系等級的壓力",
+        "text": "Codex 中文社群的討論（李東昇）認為，這一步的重點不是模型變強，而是 OpenAI 用「把代理能力融入既有的龐大 ChatGPT 用戶入口」取代「要求用戶另外學一個新產品」，讓原本只是聊天的使用者不知不覺變成代理式工作的使用者；相較於 Claude Code 在程式開發市場的口碑，OpenAI 的優勢在使用者基數跟入口規模，這篇分析把這個局面稱為「SaaS 轉向 AaaS（Agent as a Service）」的競爭主戰場轉移。"
+      }
+    ],
+    "take": "GPT-5.6 上線、Ultra 模式用多子代理平行處理、Codex 跟 ChatGPT 走向同一入口，這幾件事本身都查證屬實，不是誇大的行銷話術。但「這代表 Anthropic 已經落居下風」這個結論還是社群的解讀跟推論，不是既成事實——使用者基數大不代表這些使用者真的會把工作交給代理執行，介面整合也不等於代理能力本身更強。比較務實的看法是：這確實拉近了「一般聊天使用者」跟「代理式工作能力」之間的距離，值得持續觀察後續採用率，但現在下「戰局已定」的結論還太早。"
+  },
+  {
     "id": "loop-engineering-guide-2026",
     "title": "Loop Engineering 是什麼：從寫 Prompt 到設計會自我修正的工作迴圈",
     "date": "2026.07.09",
