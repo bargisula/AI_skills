@@ -1,5 +1,121 @@
 window.AI_SKILLS_ARTICLES = [
   {
+    "id": "agent-skills-workflow-guide-2026-07-14",
+    "title": "Agent Skills 不只是提示詞：把一套工作方法裝進可重複使用的資料夾",
+    "date": "2026.07.14",
+    "sourceDate": "2026.07.10-13",
+    "category": "AI 工作流",
+    "tags": [
+      "Agent Skills",
+      "Skill",
+      "工作流",
+      "Prompt",
+      "自動化"
+    ],
+    "sourceTitle": "Agent Skills: A Beginner's Guide；OpenAI Workspace agents",
+    "sourceUrl": "https://openai.com/academy/workspace-agents/",
+    "summary": "近期 Agent Skills 的討論逐漸從一段好提示詞轉向一個可攜帶的工作方法。實用的 Skill 應該把觸發條件、操作步驟、參考資料、工具限制與驗收規則放在一起，讓不同 agent 能依同一套流程執行。",
+    "keyPoints": [
+      {
+        "title": "Skill 是程序，不是人格設定",
+        "text": "好的 Skill 描述如何完成任務、何時使用工具與如何驗收；它不只是要求模型用某種語氣回答。"
+      },
+      {
+        "title": "資料夾結構讓工作流可維護",
+        "text": "把 SKILL.md、references、scripts 與範例分開，更新來源或驗證器時不必重寫整段提示詞。"
+      },
+      {
+        "title": "跨工具可攜的是流程骨架",
+        "text": "不同平台的工具名稱可能不同，但觸發、取數、處理、檢查、交付的流程可以保持一致。"
+      },
+      {
+        "title": "驗收條件決定 Skill 是否真的有用",
+        "text": "若只產生說明文件，卻不能取得資料、執行腳本或驗證輸出，仍只是提示詞外殼。"
+      }
+    ],
+    "workflow": [
+      {
+        "step": "先寫出任務的完成定義",
+        "prompt": "請把這項工作拆成輸入、執行動作、輸出檔案與驗收條件；先不要寫提示詞。",
+        "take": "把回答得好改成可檢查的結果。"
+      },
+      {
+        "step": "建立最小 Skill 資料夾",
+        "prompt": "請設計一個 Skill 目錄：SKILL.md 說明觸發與流程，references 放規則，scripts 放可執行步驟，examples 放通過驗證的輸出。",
+        "take": "先做最小可用結構，再逐步補充資料。"
+      },
+      {
+        "step": "把工具動作寫成檢查點",
+        "prompt": "請將流程改寫成每一步都包含：要呼叫的工具、輸入、預期結果、失敗時停止或重試條件。",
+        "take": "讓 agent 知道什麼時候真的完成。"
+      },
+      {
+        "step": "用一個真實案例回歸測試",
+        "prompt": "請用一個真實任務執行這個 Skill，列出實際取得的資料、產出的檔案、驗證結果與仍缺少的權限。",
+        "take": "把能力邊界記錄下來。"
+      }
+    ],
+    "take": "Skill 的價值不在於把 prompt 寫得更長，而在於把個人工作方法變成可重複、可檢查、可交接的執行單元。"
+  },
+  {
+    "id": "ai-coding-agent-repo-workflow-2026-07-14",
+    "title": "Coding Agent 正從補全走向整個 Repo：使用時要把任務拆成可驗證的迴圈",
+    "date": "2026.07.14",
+    "sourceDate": "2026.07.07-13",
+    "category": "AI 程式開發",
+    "tags": [
+      "Coding Agent",
+      "Codex",
+      "Claude Code",
+      "GitHub Copilot",
+      "測試"
+    ],
+    "sourceTitle": "Adoption and Impact of Command-Line AI Coding Agents；The Shift to Agentic AI: Evidence from Codex",
+    "sourceUrl": "https://arxiv.org/abs/2607.01418",
+    "summary": "最新研究與產業報導都指向同一個變化：coding agent 的工作單位已從一行程式碼或單一函式，擴大到 repository、issue 與完整開發迴圈。真正可用的做法是讓 agent 讀規則、提出計畫、修改小範圍、執行測試，再由人確認差異。",
+    "keyPoints": [
+      {
+        "title": "工作單位從補全變成任務",
+        "text": "Agent 可以理解檔案關係、執行命令與修改多個檔案，因此任務描述與驗收標準比單句 prompt 更重要。"
+      },
+      {
+        "title": "Repo 規則是第一層護欄",
+        "text": "README、AGENTS.md、測試命令與禁止操作應在 agent 動手前被讀取並確認。"
+      },
+      {
+        "title": "最可靠的是短迴圈",
+        "text": "先計畫、再小改、立即測試、檢視 diff；每一輪都保留可回退的版本。"
+      },
+      {
+        "title": "人仍要驗證產品判斷",
+        "text": "測試通過不等於需求完成，仍需檢查 UX、權限、資料安全與是否改到不相關檔案。"
+      }
+    ],
+    "workflow": [
+      {
+        "step": "先讓 agent 讀 repo 規則",
+        "prompt": "請先讀 README、AGENTS.md、package.json 與相關測試檔。只回報你確認到的規則、可用命令與不確定之處，不要修改檔案。",
+        "take": "先建立共享上下文。"
+      },
+      {
+        "step": "把 issue 改成驗收清單",
+        "prompt": "請將這個需求拆成 3-7 個可驗證條件，標示涉及檔案、需要新增的測試，以及明確不在範圍內的項目。",
+        "take": "讓成果可以用 diff 與測試逐項核對。"
+      },
+      {
+        "step": "限制一次修改的範圍",
+        "prompt": "請只完成第一個驗收條件，修改前先列計畫，完成後執行最小相關測試並回報檔案變更。",
+        "take": "小步驟能降低範圍漂移。"
+      },
+      {
+        "step": "做測試與 diff 審查",
+        "prompt": "請執行專案指定的 lint、test 或 build，接著檢查 git diff：列出通過項目、失敗原因、潛在副作用與仍需人工確認的地方。",
+        "take": "把看起來能跑提升成可交付證據。"
+      }
+    ],
+    "take": "coding agent 的效率來自更大的上下文，但穩定性來自小迴圈。最適合的起手式是指定一個可測試的 issue，要求 agent 先讀規則、先計畫、每輪只改一小塊，最後交付測試結果與 diff。"
+  },
+  {
     "id": "ai-coding-git-fundamentals-beginners",
     "title": "AI Coding 新手該懂的 6 個 Git 名詞：不用學完整系統，先保住方向盤",
     "date": "2026.07.11",
