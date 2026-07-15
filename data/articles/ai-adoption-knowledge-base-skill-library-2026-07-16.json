@@ -1,0 +1,25 @@
+{
+  "id": "ai-adoption-knowledge-base-skill-library-2026-07-16",
+  "title": "AI 導入的終點，不是教大家寫 Prompt，而是讓人只要按一個按鈕",
+  "date": "2026.07.16",
+  "sourceDate": "2026.07.16",
+  "category": "AI Agent 工作流",
+  "tags": ["AI 導入", "HR Agent", "Knowledge Base", "Skill", "Agent", "工作流"],
+  "sourceTitle": "AI 導入的實戰拆解：從參照型知識庫到 Skill Library",
+  "sourceUrl": "https://www.bnext.com.tw/article/91473/ai-adoption-knowledge-base-skill-library",
+  "summary": "AI 導入的關鍵，不是訓練每個人都會寫 Prompt，而是把公司的知識與工作流程封裝成員工可以直接使用的按鈕。從參照型知識庫、動作型 Skill 到共用 Skill Library，企業需要先整理資料與流程，再把 AI 包裝成熟悉的工作入口。",
+  "keyPoints": [
+    { "title": "AI 導入最大的阻力不是技術", "text": "要求每個員工學會寫 Prompt，容易讓一部分人放棄；更好的方向是把複雜操作封裝在熟悉的介面後面。", "tone": "change" },
+    { "title": "先建立參照型知識庫", "text": "職缺說明書、主管清單、表單範本、規章與系統網址，都要先整理成 AI 能查詢的資料來源。", "tone": "action" },
+    { "title": "再建立動作型知識庫，也就是 Skill", "text": "人要先跑過一次流程，記錄觸發條件、輸入資料、處理邏輯與預期產出；給人看的 SOP 不一定適合直接交給 AI。", "tone": "change" },
+    { "title": "最後才做成共用系統", "text": "Skill Library 或部門網站可以把高頻任務變成按鈕，並由指定角色統一維護版本。", "tone": "opportunity" },
+    { "title": "知識庫沒有維護，Agent 只會放大錯誤", "text": "如果參照資料與動作流程沒有先整理，直接做 Agent 或聊天機器人，AI 就只能猜測回答。", "tone": "risk" }
+  ],
+  "workflow": [
+    { "step": "選一個高頻、規則明確的工作", "prompt": "請找出一個每天重複、輸入與輸出相對穩定的工作，列出它的觸發條件、輸入資料、判斷步驟與預期產出。", "take": "先從小範圍建立可驗證的工作單位。" },
+    { "step": "整理參照文件", "prompt": "請將這項工作需要查詢的規章、範本、名單與系統連結整理成一份 AI 參照型知識庫，標示每份文件的用途與更新責任人。", "take": "讓 AI 有可靠資料可以查。" },
+    { "step": "把人跑過的流程改寫成 Skill", "prompt": "請把這項工作拆成觸發條件、輸入、處理邏輯、例外情況與輸出格式，改寫成 AI 可以執行的 Skill。", "take": "不要只把給人看的 SOP 丟給 AI。" },
+    { "step": "包裝成按鈕並維護版本", "prompt": "請設計一個讓非技術員工可以直接使用的表單或按鈕介面，並規劃 Skill 的版本更新、測試與權限管理流程。", "take": "讓使用者感覺不到複雜的 AI 操作。" }
+  ],
+  "take": "這個案例真正重要的地方，不是 HR Agent 本身，而是揭示了 AI 導入的順序：先整理參照資料，再拆解動作流程，最後才做成系統介面。AI 導入的終點，不是讓所有人都學會操作 AI，而是讓正確的 AI 能力出現在正確的工作入口。"
+}
