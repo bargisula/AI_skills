@@ -1,0 +1,59 @@
+{
+  "id": "ai-practical-guide-2026-07-20",
+  "title": "AI 實戰落地指南：RAG、Agentic AI 與 2026 工作術",
+  "date": "2026.07.20",
+  "sourceDate": "2026.07.20",
+  "category": "AI Agent 工作流",
+  "tags": [
+    "RAG",
+    "Agentic AI",
+    "LangGraph",
+    "NotebookLM",
+    "Claude",
+    "Perplexity",
+    "工作術"
+  ],
+  "sourceTitle": "原創整理筆記（Alpha）",
+  "sourceUrl": "https://bargisula-ai-skills.pages.dev/",
+  "summary": "把 RAG 知識庫、Agentic AI 多步驟工作流，跟 2026 年日常最常用的 AI 工具組合，整理成一份可以直接照做的實戰指南：從零建一個問答知識庫、讓 AI 自主完成多步驟任務、到每天開會寫信做簡報的固定套路。",
+  "keyPoints": [
+    {
+      "title": "RAG 不是理論，是四個工具的固定組合",
+      "text": "LlamaIndex 或 LangChain 做框架、Chroma 或 Pinecone 存向量、Claude 或 GPT-4o 回答問題，把 PDF/Word 丟進去、清洗分割、向量化、建索引、查詢，就是一個能用的內部知識庫。",
+      "tone": "action"
+    },
+    {
+      "title": "Agentic AI 的關鍵是拆角色，不是硬塞一個超級提示詞",
+      "text": "用 LangGraph 或 CrewAI 把任務拆成 Planner、Researcher、Writer、Reviewer 四個角色，每個角色給對應工具，中間加人類審核點，比單一大 prompt 穩定得多。",
+      "tone": "change"
+    },
+    {
+      "title": "每天真的會用到的，是固定的工具配對，不是新奇功能",
+      "text": "會議總結配 NotebookLM、寫信配 Claude、做簡報用 Claude 寫內容再丟 Gamma 轉投影片、研究用 Perplexity 查完再用 NotebookLM 整理，組合固定下來效率才會穩定。",
+      "tone": "action"
+    },
+    {
+      "title": "提示詞的共通公式：角色＋格式要求＋範例",
+      "text": "不管是 RAG 查詢、Agent 任務、還是日常寫作，提示詞品質的差異幾乎都來自有沒有給角色設定、明確格式要求、跟一個範例，而不是句子寫得多長。",
+      "tone": "opportunity"
+    }
+  ],
+  "workflow": [
+    {
+      "step": "建一個知識庫問答系統（RAG）",
+      "prompt": "把公司文件放進 data/ 資料夾，用 SimpleDirectoryReader 讀取，RecursiveCharacterTextSplitter 切成 800 tokens、重疊 100，text-embedding-3-large 向量化，VectorStoreIndex 建索引，QueryEngine 查詢時要求「附來源回答」，前端用 Streamlit 做聊天介面。",
+      "take": "重點是清洗與分割那一步，切太大會查不準，切太小會失去上下文。"
+    },
+    {
+      "step": "搭一個市場研究 Agent（Agentic AI）",
+      "prompt": "用 LangGraph 定義 Graph（節點與邊緣），Planner Agent 拆解任務、Researcher Agent 用 RAG＋網路搜尋、Writer Agent 生成報告、Reviewer Agent 檢查，每個 Agent 給對應工具，執行中加入人類審核點。",
+      "take": "人類審核點不是可有可無，是防止 Agent 走偏最便宜的方法。"
+    },
+    {
+      "step": "把每天的 AI 工作術固定成 SOP",
+      "prompt": "會議錄音丟 NotebookLM 產生行動項目與責任人；寫信用 Claude＋「正式語氣，強調重點」；簡報先用 Claude 寫內容，再丟 Gamma 一鍵轉投影片；研究先用 Perplexity 查資料，再用 NotebookLM 整理成長期知識庫。",
+      "take": "固定工具配對，才不用每次都重新想「這次要用哪個 AI」。"
+    }
+  ],
+  "take": "這份指南的核心不是介紹新工具，而是把 RAG、Agentic AI、跟日常 AI 工作術，各自收斂成一套可以重複執行的固定流程——知識庫要能查、Agent 要能拆角色加審核點、日常工具要配對固定，效率才會累積，而不是每次都重新摸索。"
+}
