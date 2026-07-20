@@ -1,4 +1,4 @@
-const CACHE_NAME = "ai-skills-pwa-v21";
+const CACHE_NAME = "ai-skills-pwa-v22";
 const ASSETS = [
   "./",
   "./index.html",
@@ -41,6 +41,21 @@ self.addEventListener("fetch", (event) => {
           return response;
         })
         .catch(() => caches.match(event.request).then((cached) => cached || caches.match("./index.html")))
+    );
+    return;
+  }
+
+  const url = new URL(event.request.url);
+  if (url.pathname.endsWith("/data/articles.js")) {
+    // 文章索引一律先問伺服器，離線時才退回快取，避免內容更新後永遠卡在舊快取
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          return response;
+        })
+        .catch(() => caches.match(event.request))
     );
     return;
   }
