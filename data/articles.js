@@ -1,5 +1,67 @@
 window.AI_SKILLS_ARTICLES = [
   {
+    "id": "claude-code-ios-app-no-swift-2026-07-07",
+    "title": "他從HTML版本出發，一個晚上做出飲控App！全程他只需要說「這裡不對」",
+    "date": "2026.07.20",
+    "sourceDate": "2026.07.07",
+    "category": "AI Agent 工作流",
+    "tags": [
+      "Claude Code",
+      "Xcode",
+      "iOS App",
+      "Plan Mode",
+      "無程式背景"
+    ],
+    "sourceTitle": "他從HTML版本出發，一個晚上做出飲控App！全程他只需要說「這裡不對」",
+    "sourceUrl": "https://www.bnext.com.tw/article/91436/claude-code-ios-app-no-swift",
+    "summary": "不會寫 Swift 的人，用 Claude Code 搭配 Xcode，一個晚上做出一支能裝到 iPhone 上的飲控 App。關鍵不是技術多深，是先用 /plan 模式把需求說清楚、再讓 Claude Code 寫程式碼、自己只需要盯著 Xcode 預覽畫面說「這裡不對」。",
+    "keyPoints": [
+      {
+        "title": "先做 HTML 網頁版，把需求想清楚再動工",
+        "text": "直接跳去做 iOS App 容易需求邊做邊改，先用 HTML 做一個網頁版本，把功能、畫面邏輯釐清，之後轉成 App 才不會一路砍掉重練。",
+        "tone": "action"
+      },
+      {
+        "title": "用 /plan 指令進入計畫模式，先列清單再逐條刪減",
+        "text": "把想要的功能一次說清楚，讓 Claude Code 用 /plan 列出完整功能清單，再逐條問自己「這個我真的會用嗎」，刪掉不必要的功能後才真正開始寫。",
+        "tone": "action"
+      },
+      {
+        "title": "Claude Code 寫 Swift，Xcode 即時預覽，人只給視覺回饋",
+        "text": "在電腦上建專案資料夾，Claude Code 直接寫入 Swift 程式碼，Xcode 同時打開同一個資料夾，程式碼一更新，Xcode 右側預覽畫面就跟著變化，使用者只需要說「按鈕太小」「這裡不對」這類視覺回饋。",
+        "tone": "change"
+      },
+      {
+        "title": "免費開發者帳號能裝到自己手機，但憑證 7 天就過期",
+        "text": "不用付費 Apple 開發者帳號，用一般 Apple 帳號透過開發者測試模式就能把 App 裝到自己的 iPhone，但簽署憑證每 7 天會過期，過期後要回 Xcode 重新簽署才能繼續用。",
+        "tone": "risk"
+      }
+    ],
+    "workflow": [
+      {
+        "step": "先做網頁版本釐清需求",
+        "prompt": "用 HTML／CSS／JS 做出功能的網頁版原型（例如這篇的飲控工具：勾選預設食材組合，自動算出三大營養素），把畫面邏輯跟功能範圍先定下來。",
+        "take": "網頁版改起來成本低，先在這裡把需求吵完，不要留到 App 階段才改架構。"
+      },
+      {
+        "step": "用 /plan 模式列功能清單再刪減",
+        "prompt": "在 Claude Code 輸入 /plan，把想要的功能一次講清楚，等 AI 列出完整功能清單後，逐條自問「這個我真的會用嗎」，刪掉非必要功能，確認過的清單才是真正要開發的範圍。",
+        "take": "先刪功能再開工，比寫到一半發現用不到再砍便宜很多。"
+      },
+      {
+        "step": "Claude Code + Xcode 協作寫 App，只給視覺回饋",
+        "prompt": "在電腦建一個專案資料夾，用 Xcode 打開這個資料夾，讓 Claude Code 在同一個資料夾寫入 Swift 程式碼；每次改完看 Xcode 右側即時預覽，只需要回饋像「按鈕太小」「這裡的顏色不對」這種具體視覺問題，權限開啟、套件安裝都跟著 AI 的指引做。",
+        "take": "不用懂 Swift 語法，你的角色是盯畫面挑錯，不是寫程式碼。"
+      },
+      {
+        "step": "用免費帳號部署到自己手機並記得定期重簽",
+        "prompt": "用一般 Apple 帳號透過 Xcode 的開發者測試模式把 App 安裝到自己的 iPhone；因為沒有付費開發者帳號，簽署憑證每 7 天會過期，過期後要回到 Xcode 對同一個專案重新執行簽署流程才能繼續打開 App。",
+        "take": "免費部署可以用，但記得排提醒，7 天沒重簽 App 會直接打不開。"
+      }
+    ],
+    "take": "沒有 Swift 背景也能靠 Claude Code 做出真正能裝上手機的 App，前提是先用 HTML 版本跟 /plan 模式把需求收斂清楚，開發階段把自己定位成「盯畫面給回饋」的角色，並記得免費簽署憑證 7 天過期要重簽這個實際會踩到的坑。"
+  },
+  {
     "id": "how-to-build-ai-agent-reverse-workflow-2026-07-17",
     "title": "非工程師，怎麼建立你的AI Agent？先「反向拆解工作流」",
     "date": "2026.07.20",
