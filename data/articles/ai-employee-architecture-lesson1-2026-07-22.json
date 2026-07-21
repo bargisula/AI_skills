@@ -1,0 +1,67 @@
+{
+  "id": "ai-employee-architecture-lesson1-2026-07-22",
+  "title": "《AI 員工架構設計》第一課：AI System Architecture",
+  "date": "2026.07.22",
+  "sourceDate": "2026.07.22",
+  "category": "AI Agent 架構",
+  "tags": [
+    "AI System Architecture",
+    "Orchestrator",
+    "Workflow",
+    "Memory",
+    "Agent 架構"
+  ],
+  "sourceTitle": "原創課程筆記（Alpha × GPT）",
+  "sourceUrl": "https://bargisula-ai-skills.pages.dev/",
+  "summary": "這門課不教怎麼用 GPT／Claude／Gemini，而是教怎麼把 AI、程式、資料、工具組合成一個會持續完成工作的系統。核心是七層架構（介面／協調／能力／記憶／知識／工具／模型）——Model 只是最後一層的推理引擎，Workflow 才是真正的主體。",
+  "keyPoints": [
+    {
+      "title": "看新框架，先問它改了七層架構的哪一層",
+      "text": "以後遇到任何新工具或框架，不要先問「它用 GPT 還是 Claude」，先問「它在七層架構（介面、協調、能力、記憶、知識、工具、模型）中，改變的是哪一層」，這樣才不會被表面的模型差異混淆真正的架構差異。",
+      "tone": "change"
+    },
+    {
+      "title": "Orchestrator 是決策者不是執行者，Hybrid 是業界主流",
+      "text": "純 Rule Based（全 Python）快但一多規則就變義大利麵；純 AI Based 有彈性但容易漂移、難除錯、成本高；業界主流是 Hybrid：Python 管權限／安全／Router／Retry／Queue，AI 負責理解需求與規劃，最後由 Python 執行，OpenAI Agent SDK、Anthropic Claude Agent、LangGraph 都往這個方向走。",
+      "tone": "action"
+    },
+    {
+      "title": "Memory 是會變的經驗，Knowledge 是不變的資料",
+      "text": "Memory 是 AI 自己累積的經驗（使用者偏好、專案背景、過去討論），會持續變動；Knowledge 是世界上本身不會變的資料（勞基法 PDF、Notion 文件、公司規章），變的是它被使用的方式。混用這兩者會讓系統設計失焦。",
+      "tone": "change"
+    },
+    {
+      "title": "AI 的輸出必須是可執行的決策，不是自然語言",
+      "text": "AI 分類完不能只回「這封信很重要」，要回結構化 JSON（priority、action、confidence、reason、summary），而且 priority 不等於 action——老闆說 FYI 時 priority 高但 action 是 ignore，這個區分要在輸出格式裡就處理好，後面的 Python 才有辦法直接執行。",
+      "tone": "risk"
+    },
+    {
+      "title": "Learning Loop 用三層分級，記憶不能什麼都存",
+      "text": "AI 判斷錯誤時，把「判錯原因」分三層存：Rules（幾乎不變，寫死在程式裡，例如老闆的信永遠不能自動歸檔）、Preferences（屬於使用者、長期影響，例如某客戶的信永遠設 High）、Experiences（先暫存，同樣情況出現夠多次才升級成 Preference）。全部都存進 Memory 會讓它變成垃圾場。",
+      "tone": "opportunity"
+    }
+  ],
+  "workflow": [
+    {
+      "step": "設計一個具體工作流：Gmail 自動分流",
+      "prompt": "需求「整理今天 Gmail，重要的做成待辦，不重要的歸檔」的正確畫法不是 Python 呼叫 AI，是 Workflow 包住 AI：Orchestrator 先用 Python Tool 抓信（query 用 is:unread newer_than:1d 先過濾），過濾完的信才丟給 LLM 做分類判斷，判斷結果做 Decision & Validation，通過的分兩支：Todo 用 Python 建待辦、Archive 用 Python 歸檔，最後統一由 Python 做 Report & Notify。",
+      "take": "1000 封信不要全丟給 AI，Python 過濾在前面，AI 只處理過濾後的少量決策，因為 Python 快又免費，AI 貴。"
+    },
+    {
+      "step": "訂 AI 決策輸出的固定 JSON 格式",
+      "prompt": "要求 AI 分類的輸出固定包含這五個欄位：priority（重要程度）、action（todo/archive/ignore）、confidence（0~1 信心值）、reason（判斷理由，例如「老闆交辦明天下午五點前截止」）、summary（一句話摘要，例如「Q3 預算審核」），不要讓它只回一句自然語言判斷。",
+      "take": "priority 高不代表 action 就是 todo（老闆說 FYI 時 priority 高但 action 是 ignore），這個區分要寫進 prompt 的規則裡。"
+    },
+    {
+      "step": "按重要程度套用四級驗證",
+      "prompt": "Level 1 直接執行（不重要的例行判斷）；Level 2 看 confidence，設一個門檻（例如 confidence > 0.95 才自動歸檔，否則 ask_user）；Level 3 用 Rule 硬擋（例如「老闆的信不能自動 Archive」直接寫死在程式裡，不讓 AI 決定）；Level 4 用 AI Reviewer 雙重確認（Agent A 分類、Agent B 覆核，兩者一致才真正執行），流程越重要就往高 Level 套。",
+      "take": "不是所有判斷都要同等級的把關，重要的流程才需要疊到 Level 3、Level 4。"
+    },
+    {
+      "step": "把學習迴圈接回 Memory，並分區存放",
+      "prompt": "AI 判斷 → User 修正 → 記錄修正原因 → 依三層分級（Rules / Preferences / Experiences）存回對應的 Memory → 下次判斷變準。同時 Memory 本身要按用途分區（Global Memory、Email Memory、Investment Memory、Teaching Memory…），檢索時只拿當下相關的那一區，不要整包一起撈。",
+      "take": "把判錯原因『全部』寫回 Memory 不分級、不分區，長期下來 Memory 會變成查不動的垃圾場。"
+    }
+  ],
+  "take": "AI 不等於系統，Model 只是七層架構裡最後一層的推理引擎；真正的主體是 Workflow，AI 只是 Workflow 裡的一個節點，負責做決策，流程、安全、執行都交給 Python；Memory 是會變的經驗、Knowledge 是不變的資料，兩者要分開設計；而讓助理用越久越聰明而不是越用越亂的關鍵，是把判斷錯誤按 Rules／Preferences／Experiences 分三層寫回分區管理的 Memory，這就是 Learning Loop。"
+}
