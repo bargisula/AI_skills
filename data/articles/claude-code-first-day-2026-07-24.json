@@ -1,0 +1,24 @@
+{
+  "id": "claude-code-first-day-2026-07-24",
+  "title": "Claude Code 第一天：15 分鐘完成安裝、登入與第一次 AI 協作修改",
+  "date": "2026.07.24",
+  "sourceDate": "2026.04.15",
+  "category": "AI Agent 工作流",
+  "tags": ["Claude Code", "CLI", "PowerShell", "Prompt", "CLAUDE.md"],
+  "sourceTitle": "Your first day in Claude Code",
+  "sourceUrl": "https://support.claude.com/en/articles/14552382-your-first-day-in-claude-code",
+  "summary": "Anthropic 的入門文件把 Claude Code 的第一天拆成安裝、登入、進入專案、審核修改與建立專案記憶。Windows 使用者可用 PowerShell 指令安裝，再用幾個明確 prompt 完成探索、找程式碼、修 bug 與 Git 操作。",
+  "keyPoints": [
+    {"title": "Windows 直接用 PowerShell 安裝", "text": "原文提供 `irm https://claude.ai/install.ps1`，也列出 npm 與 macOS/Linux 安裝方式，並提醒不要用 sudo 執行 npm 安裝。", "tone": "action"},
+    {"title": "先確認版本，再登入並進入專案", "text": "安裝後執行 `claude --version`；啟動 Claude 後可輸入 `/login`，接著在目標 repository 執行 `cd path/to/your/project` 再啟動 Claude。", "tone": "action"},
+    {"title": "每次修改先看 diff 再批准", "text": "Claude Code 會在變更檔案或執行命令前詢問，使用者可選 Yes、Yes and don't ask again 或 No，並可用 Shift+Tab 切換 Plan、Accept Edits 與預設模式。", "tone": "risk"},
+    {"title": "用 /init 建立專案記憶", "text": "一天結束前在專案中執行 `/init`，產生 `CLAUDE.md`，讓後續 session 自動讀取專案慣例。", "tone": "opportunity"}
+  ],
+  "workflow": [
+    {"step": "安裝並確認 Claude Code", "prompt": "在 Windows PowerShell 貼上 `irm https://claude.ai/install.ps1`，完成後執行 `claude --version` 確認安裝成功；若使用 npm，改用 `npm install -g @anthropic-ai/claude-code`，不要加 `sudo`。", "take": "先確認 CLI 能啟動，再進入任何專案。"},
+    {"step": "登入並從目標專案啟動", "prompt": "先執行 `claude`，在 Claude Code 中輸入 `/login` 並完成瀏覽器登入；接著在終端機執行 `cd path/to/your/project`，再執行 `claude` 開啟目標 repository。", "take": "Claude Code 直接讀取目前專案，不需要先上傳檔案。"},
+    {"step": "用五個低風險 prompt 熟悉工作流", "prompt": "依序貼上：`Give me a 5-bullet summary of what this codebase does and where the entry point is.`、`Where is user authentication handled? Show me the file and the key function.`、`Add a docstring to the function <name> in <file>. Keep it to 2 lines.`、`This test is failing: <paste the error>. Find the cause and fix it.`、`Stage my changes and write a commit message that follows our existing style.`；每次先檢查回覆與 diff，再決定是否批准。", "take": "先從盤點、查找與小修改開始，再讓 AI 處理真實 bug 或 Git。"},
+    {"step": "建立專案記憶", "prompt": "在專案根目錄的 Claude Code session 執行 `/init`，確認產生 `CLAUDE.md`，讓它記錄並在未來 session 自動載入 codebase conventions。", "take": "把一次性的理解沉澱成下一次可重用的上下文。"}
+  ],
+  "take": "Claude Code 的第一天不必從複雜功能開始：安裝、登入、進入 repository、審核一次小修改，最後用 `/init` 建立專案記憶，就能跑完一條安全而可重複的入門路徑。"
+}

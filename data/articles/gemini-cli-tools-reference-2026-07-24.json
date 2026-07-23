@@ -1,0 +1,24 @@
+{
+  "id": "gemini-cli-tools-reference-2026-07-24",
+  "title": "Gemini CLI 工具怎麼用：用 @、! 與 /tools 控制檔案和 Shell 權限",
+  "date": "2026.07.24",
+  "sourceDate": "2026.05.13",
+  "category": "AI Agent 工作流",
+  "tags": ["Gemini CLI", "Shell", "Tools", "Sandbox", "MCP"],
+  "sourceTitle": "Tools reference",
+  "sourceUrl": "https://geminicli.com/docs/reference/tools/",
+  "summary": "Gemini CLI 官方工具參考文件列出檔案、Shell、Web、MCP 與 tracker 工具，並說明如何用 `@` 讀檔、用 `!` 執行 shell、用 `/tools` 查看工具與用 policy deny 規則保護 `.env`。這是一份可以直接照著測試工具邊界的操作文件。",
+  "keyPoints": [
+    {"title": "用 @ 觸發 read_many_files", "text": "文件說明 `@` 可觸發 `read_many_files`，適合把多個檔案或資料夾內容送進上下文，而不是逐一手動貼上。", "tone": "action"},
+    {"title": "用 ! 觸發 run_shell_command", "text": "`!` 可觸發 `run_shell_command`；這讓 Gemini CLI 能執行 shell，但也代表使用者需要先理解確認、sandbox 與 trusted folder 的安全邊界。", "tone": "risk"},
+    {"title": "先用 /tools 檢查可用工具", "text": "在 CLI 輸入 `/tools` 可列出工具，輸入 `/tools desc` 可查看描述；文件也列出工具參數，例如 `read_file` 的 `file_path`、`start_line`、`end_line`。", "tone": "action"},
+    {"title": "用 policy deny 保護敏感檔案", "text": "官方範例以 `file_path` 的正規表示式匹配 `.env`，對 `write_file` 設定 `decision = deny` 與訊息 `Writing to .env files is not allowed.`。", "tone": "risk"}
+  ],
+  "workflow": [
+    {"step": "列出目前可用工具", "prompt": "在 Gemini CLI 輸入 `/tools`，確認工具清單；再輸入 `/tools desc` 查看每個工具的描述與可接受的參數，先不要直接執行未知工具。", "take": "先盤點工具能力，再決定要授予哪種操作。"},
+    {"step": "用 @ 讀取指定檔案內容", "prompt": "在對話中使用 `@` 指定要讀取的檔案或資料夾，讓 CLI 觸發 `read_many_files`；要求它先列出讀取到的檔名與用途，不要在第一次操作就修改檔案。", "take": "先建立可驗證的上下文，再進入修改。"},
+    {"step": "用 ! 執行一個可控 shell 命令", "prompt": "在確認 trusted folder、sandbox 與 mutator confirmation 規則後，使用 `!` 觸發 `run_shell_command`，先選擇低風險的列出或檢查命令，執行前閱讀確認提示。", "take": "Shell 是高權限工具，先從可逆、唯讀命令開始。"},
+    {"step": "加入 .env 寫入拒絕規則", "prompt": "在 Gemini CLI policy 設定加入官方示例：`toolName = \"write_file\"`、`argsPattern = '\"file_path\":\".*\\.env\"'`、`decision = \"deny\"`、`priority = 100`，並設定 `denyMessage = \"Writing to .env files is not allowed.\"`。", "take": "把敏感檔案保護寫成規則，不靠每次對話提醒。"}
+  ],
+  "take": "Gemini CLI 的重點不是工具越多越好，而是先用 `/tools` 看清邊界，再用 `@` 讀取、`!` 執行，最後用 policy deny 對 `.env` 等敏感路徑建立硬性保護。"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "vscode-agent-chat-workflow-2026-07-24",
+  "title": "VS Code Agent 工作流：用 #context、快捷鍵與 diff 審核把 AI 放進編輯器",
+  "date": "2026.07.24",
+  "sourceDate": "2026.07.15",
+  "category": "AI Agent 工作流",
+  "tags": ["VS Code", "GitHub Copilot", "Agent", "Prompt", "MCP"],
+  "sourceTitle": "Use chat in VS Code",
+  "sourceUrl": "https://code.visualstudio.com/docs/chat/chat-overview",
+  "summary": "VS Code 官方文件說明如何在 Agents window、Chat view 與 Inline chat 之間切換，並用 `#` mentions 精準補充檔案、symbol、codebase 或 terminal context。AI 修改後可透過 inline diff、Keep/Undo 與 checkpoints 逐步審核。",
+  "keyPoints": [
+    {"title": "依任務選 Agents window 或 Chat view", "text": "Agents window 適合跨專案的高階任務，可用 `code --agents` 開啟；Chat view 適合 workspace 內的 coding task，Windows/Linux 可用 Ctrl+Alt+I。", "tone": "action"},
+    {"title": "用 #mentions 補上真正需要的上下文", "text": "在 prompt 中輸入 `#`，可引用 `#file`、資料夾、symbol、`#codebase`、`#terminalSelection` 或 `#fetch`，避免只靠自然語言猜檔案。", "tone": "change"},
+    {"title": "用 / 指令與明確 prompt 提高可控性", "text": "輸入 `/` 可查看 slash commands 與 Agent Skills；官方示例是 `Add input validation to the signup form`，並建議具體描述目標、檔案與 symbol。", "tone": "action"},
+    {"title": "接受前檢查 inline diff 與 checkpoints", "text": "AI 修改後可逐項 Keep 或 Undo，Source Control 的 stage 也可接受 pending edits；checkpoints 則提供回到先前狀態的快照。", "tone": "risk"}
+  ],
+  "workflow": [
+    {"step": "開啟適合的 Agent 介面", "prompt": "若要跨多個 project 協調高階任務，執行 `code --agents` 開啟 Agents window；若只在目前 workspace 修改程式，開啟 Chat view，Windows/Linux 使用 `Ctrl+Alt+I`。", "take": "先選對介面，讓任務範圍與上下文邊界清楚。"},
+    {"step": "用具體 prompt 加上檔案上下文", "prompt": "在 chat 輸入 `Add input validation to the signup form`，再用 `#` 選取相關檔案、symbol 或 `#codebase`；若要帶入終端機錯誤，加入 `#terminalSelection`。", "take": "任務、目標檔案與錯誤上下文要一起給。"},
+    {"step": "用 slash command 或 skill 重複常見任務", "prompt": "在 chat 輸入 `/`，從清單選擇適合的 slash command 或 Agent Skill；把重複工作改寫成具體、可重用的 prompt，而不是只寫「幫我改善程式」。", "take": "把常見任務變成可重複觸發的操作。"},
+    {"step": "逐項審核修改並保留回復點", "prompt": "AI 回覆後開啟變更檔案的 inline diff，逐項按 Keep 或 Undo；需要整批確認時到 Source Control stage，若結果不對則使用 checkpoints 回到先前快照。", "take": "AI 產生修改，人的工作是審核每個變更邊界。"}
+  ],
+  "take": "VS Code 的 Agent 工作流不是把 prompt 丟進黑盒子，而是用正確介面、`#` context、`/` commands 與 diff/checkpoint 審核，把 AI 的每次修改留在可追蹤的編輯循環裡。"
+}

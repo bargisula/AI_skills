@@ -1,5 +1,253 @@
 window.AI_SKILLS_ARTICLES = [
   {
+    "id": "claude-code-first-day-2026-07-24",
+    "title": "Claude Code 第一天：15 分鐘完成安裝、登入與第一次 AI 協作修改",
+    "date": "2026.07.24",
+    "sourceDate": "2026.04.15",
+    "category": "AI Agent 工作流",
+    "tags": [
+      "Claude Code",
+      "CLI",
+      "PowerShell",
+      "Prompt",
+      "CLAUDE.md"
+    ],
+    "sourceTitle": "Your first day in Claude Code",
+    "sourceUrl": "https://support.claude.com/en/articles/14552382-your-first-day-in-claude-code",
+    "summary": "Anthropic 的入門文件把 Claude Code 的第一天拆成安裝、登入、進入專案、審核修改與建立專案記憶。Windows 使用者可用 PowerShell 指令安裝，再用幾個明確 prompt 完成探索、找程式碼、修 bug 與 Git 操作。",
+    "keyPoints": [
+      {
+        "title": "Windows 直接用 PowerShell 安裝",
+        "text": "原文提供 `irm https://claude.ai/install.ps1`，也列出 npm 與 macOS/Linux 安裝方式，並提醒不要用 sudo 執行 npm 安裝。",
+        "tone": "action"
+      },
+      {
+        "title": "先確認版本，再登入並進入專案",
+        "text": "安裝後執行 `claude --version`；啟動 Claude 後可輸入 `/login`，接著在目標 repository 執行 `cd path/to/your/project` 再啟動 Claude。",
+        "tone": "action"
+      },
+      {
+        "title": "每次修改先看 diff 再批准",
+        "text": "Claude Code 會在變更檔案或執行命令前詢問，使用者可選 Yes、Yes and don't ask again 或 No，並可用 Shift+Tab 切換 Plan、Accept Edits 與預設模式。",
+        "tone": "risk"
+      },
+      {
+        "title": "用 /init 建立專案記憶",
+        "text": "一天結束前在專案中執行 `/init`，產生 `CLAUDE.md`，讓後續 session 自動讀取專案慣例。",
+        "tone": "opportunity"
+      }
+    ],
+    "workflow": [
+      {
+        "step": "安裝並確認 Claude Code",
+        "prompt": "在 Windows PowerShell 貼上 `irm https://claude.ai/install.ps1`，完成後執行 `claude --version` 確認安裝成功；若使用 npm，改用 `npm install -g @anthropic-ai/claude-code`，不要加 `sudo`。",
+        "take": "先確認 CLI 能啟動，再進入任何專案。"
+      },
+      {
+        "step": "登入並從目標專案啟動",
+        "prompt": "先執行 `claude`，在 Claude Code 中輸入 `/login` 並完成瀏覽器登入；接著在終端機執行 `cd path/to/your/project`，再執行 `claude` 開啟目標 repository。",
+        "take": "Claude Code 直接讀取目前專案，不需要先上傳檔案。"
+      },
+      {
+        "step": "用五個低風險 prompt 熟悉工作流",
+        "prompt": "依序貼上：`Give me a 5-bullet summary of what this codebase does and where the entry point is.`、`Where is user authentication handled? Show me the file and the key function.`、`Add a docstring to the function <name> in <file>. Keep it to 2 lines.`、`This test is failing: <paste the error>. Find the cause and fix it.`、`Stage my changes and write a commit message that follows our existing style.`；每次先檢查回覆與 diff，再決定是否批准。",
+        "take": "先從盤點、查找與小修改開始，再讓 AI 處理真實 bug 或 Git。"
+      },
+      {
+        "step": "建立專案記憶",
+        "prompt": "在專案根目錄的 Claude Code session 執行 `/init`，確認產生 `CLAUDE.md`，讓它記錄並在未來 session 自動載入 codebase conventions。",
+        "take": "把一次性的理解沉澱成下一次可重用的上下文。"
+      }
+    ],
+    "take": "Claude Code 的第一天不必從複雜功能開始：安裝、登入、進入 repository、審核一次小修改，最後用 `/init` 建立專案記憶，就能跑完一條安全而可重複的入門路徑。"
+  },
+  {
+    "id": "vscode-agent-chat-workflow-2026-07-24",
+    "title": "VS Code Agent 工作流：用 #context、快捷鍵與 diff 審核把 AI 放進編輯器",
+    "date": "2026.07.24",
+    "sourceDate": "2026.07.15",
+    "category": "AI Agent 工作流",
+    "tags": [
+      "VS Code",
+      "GitHub Copilot",
+      "Agent",
+      "Prompt",
+      "MCP"
+    ],
+    "sourceTitle": "Use chat in VS Code",
+    "sourceUrl": "https://code.visualstudio.com/docs/chat/chat-overview",
+    "summary": "VS Code 官方文件說明如何在 Agents window、Chat view 與 Inline chat 之間切換，並用 `#` mentions 精準補充檔案、symbol、codebase 或 terminal context。AI 修改後可透過 inline diff、Keep/Undo 與 checkpoints 逐步審核。",
+    "keyPoints": [
+      {
+        "title": "依任務選 Agents window 或 Chat view",
+        "text": "Agents window 適合跨專案的高階任務，可用 `code --agents` 開啟；Chat view 適合 workspace 內的 coding task，Windows/Linux 可用 Ctrl+Alt+I。",
+        "tone": "action"
+      },
+      {
+        "title": "用 #mentions 補上真正需要的上下文",
+        "text": "在 prompt 中輸入 `#`，可引用 `#file`、資料夾、symbol、`#codebase`、`#terminalSelection` 或 `#fetch`，避免只靠自然語言猜檔案。",
+        "tone": "change"
+      },
+      {
+        "title": "用 / 指令與明確 prompt 提高可控性",
+        "text": "輸入 `/` 可查看 slash commands 與 Agent Skills；官方示例是 `Add input validation to the signup form`，並建議具體描述目標、檔案與 symbol。",
+        "tone": "action"
+      },
+      {
+        "title": "接受前檢查 inline diff 與 checkpoints",
+        "text": "AI 修改後可逐項 Keep 或 Undo，Source Control 的 stage 也可接受 pending edits；checkpoints 則提供回到先前狀態的快照。",
+        "tone": "risk"
+      }
+    ],
+    "workflow": [
+      {
+        "step": "開啟適合的 Agent 介面",
+        "prompt": "若要跨多個 project 協調高階任務，執行 `code --agents` 開啟 Agents window；若只在目前 workspace 修改程式，開啟 Chat view，Windows/Linux 使用 `Ctrl+Alt+I`。",
+        "take": "先選對介面，讓任務範圍與上下文邊界清楚。"
+      },
+      {
+        "step": "用具體 prompt 加上檔案上下文",
+        "prompt": "在 chat 輸入 `Add input validation to the signup form`，再用 `#` 選取相關檔案、symbol 或 `#codebase`；若要帶入終端機錯誤，加入 `#terminalSelection`。",
+        "take": "任務、目標檔案與錯誤上下文要一起給。"
+      },
+      {
+        "step": "用 slash command 或 skill 重複常見任務",
+        "prompt": "在 chat 輸入 `/`，從清單選擇適合的 slash command 或 Agent Skill；把重複工作改寫成具體、可重用的 prompt，而不是只寫「幫我改善程式」。",
+        "take": "把常見任務變成可重複觸發的操作。"
+      },
+      {
+        "step": "逐項審核修改並保留回復點",
+        "prompt": "AI 回覆後開啟變更檔案的 inline diff，逐項按 Keep 或 Undo；需要整批確認時到 Source Control stage，若結果不對則使用 checkpoints 回到先前快照。",
+        "take": "AI 產生修改，人的工作是審核每個變更邊界。"
+      }
+    ],
+    "take": "VS Code 的 Agent 工作流不是把 prompt 丟進黑盒子，而是用正確介面、`#` context、`/` commands 與 diff/checkpoint 審核，把 AI 的每次修改留在可追蹤的編輯循環裡。"
+  },
+  {
+    "id": "vscode-agents-workflow-2026-07-22",
+    "title": "VS Code Agent 工作流：從開啟代理到規劃、修改與測試一條龍",
+    "date": "2026.07.22",
+    "sourceDate": "2026.07.15",
+    "category": "AI Agent 工作流",
+    "tags": [
+      "VS Code",
+      "Copilot",
+      "Agent Mode",
+      "Plan",
+      "MCP"
+    ],
+    "sourceTitle": "Build with agents in VS Code",
+    "sourceUrl": "https://code.visualstudio.com/docs/agents/overview",
+    "summary": "VS Code 官方文件示範如何在工作區啟用 Agent，選擇 Copilot CLI，交給代理規劃、跨檔案修改、執行命令與自我修正。文件也清楚列出 Plan、權限層級、Agent Skills、prompt file、MCP 與 sandbox 等可配置元件。",
+    "keyPoints": [
+      {
+        "title": "先確認 chat.agent.enabled",
+        "text": "若組織政策關閉 chat.agent.enabled，需請管理員開啟，否則無法使用 VS Code Agent。",
+        "tone": "action"
+      },
+      {
+        "title": "用 Plan agent 先產出步驟",
+        "text": "複雜任務可先選 Plan agent，審閱並修正實作計畫後再進行檔案變更。",
+        "tone": "change"
+      },
+      {
+        "title": "可選擇不同執行位置與權限",
+        "text": "Agent 可在 VS Code 本機、Copilot CLI、GitHub cloud 或第三方 provider 執行，並可設定每次核准或較高自主權。",
+        "tone": "risk"
+      },
+      {
+        "title": "把重複工作包成 Skills 或 prompt file",
+        "text": "VS Code 可用 Agent Skills、prompt files、custom agents、MCP servers 與 hooks 讓工作流可重複使用。",
+        "tone": "opportunity"
+      }
+    ],
+    "workflow": [
+      {
+        "step": "啟用 Agent 並選定工作區",
+        "prompt": "在 VS Code 確認 chat.agent.enabled 已開啟；登入 GitHub 後選 Open in Agents，選擇工作區資料夾，再選 Copilot CLI agent 開始 session。",
+        "take": "先把代理綁定到正確工作區，避免在錯誤資料夾修改檔案。"
+      },
+      {
+        "step": "用 Plan agent 拆解需求",
+        "prompt": "請使用 Plan agent，將這個需求拆成可驗收的步驟：[貼上需求]。先不要修改任何檔案，請列出會碰到的檔案、命令、測試與風險。",
+        "take": "先審計畫，再讓 Agent 動手。"
+      },
+      {
+        "step": "用具體 prompt 執行修改",
+        "prompt": "Add a dark mode toggle to the header and make sure it works on mobile。請先說明預計修改的檔案，完成後執行相關測試並回報結果。",
+        "take": "官方示例顯示，需求要包含功能與驗收條件，而不只是『幫我改漂亮』。"
+      },
+      {
+        "step": "設定權限與可重用工作流",
+        "prompt": "請將這個重複任務整理成 Agent Skill 或 prompt file：[任務]，並列出需要的 MCP、hooks、權限層級與 sandbox 邊界。",
+        "take": "把一次性對話整理成團隊可重複的工作流。"
+      }
+    ],
+    "take": "VS Code Agent 的效率來自『先規劃、再授權、最後驗證』：把工作區、代理類型、權限和可重用指示一起設定，才不會只得到一次性的生成結果。"
+  },
+  {
+    "id": "gemini-cli-tools-reference-2026-07-24",
+    "title": "Gemini CLI 工具怎麼用：用 @、! 與 /tools 控制檔案和 Shell 權限",
+    "date": "2026.07.24",
+    "sourceDate": "2026.05.13",
+    "category": "AI Agent 工作流",
+    "tags": [
+      "Gemini CLI",
+      "Shell",
+      "Tools",
+      "Sandbox",
+      "MCP"
+    ],
+    "sourceTitle": "Tools reference",
+    "sourceUrl": "https://geminicli.com/docs/reference/tools/",
+    "summary": "Gemini CLI 官方工具參考文件列出檔案、Shell、Web、MCP 與 tracker 工具，並說明如何用 `@` 讀檔、用 `!` 執行 shell、用 `/tools` 查看工具與用 policy deny 規則保護 `.env`。這是一份可以直接照著測試工具邊界的操作文件。",
+    "keyPoints": [
+      {
+        "title": "用 @ 觸發 read_many_files",
+        "text": "文件說明 `@` 可觸發 `read_many_files`，適合把多個檔案或資料夾內容送進上下文，而不是逐一手動貼上。",
+        "tone": "action"
+      },
+      {
+        "title": "用 ! 觸發 run_shell_command",
+        "text": "`!` 可觸發 `run_shell_command`；這讓 Gemini CLI 能執行 shell，但也代表使用者需要先理解確認、sandbox 與 trusted folder 的安全邊界。",
+        "tone": "risk"
+      },
+      {
+        "title": "先用 /tools 檢查可用工具",
+        "text": "在 CLI 輸入 `/tools` 可列出工具，輸入 `/tools desc` 可查看描述；文件也列出工具參數，例如 `read_file` 的 `file_path`、`start_line`、`end_line`。",
+        "tone": "action"
+      },
+      {
+        "title": "用 policy deny 保護敏感檔案",
+        "text": "官方範例以 `file_path` 的正規表示式匹配 `.env`，對 `write_file` 設定 `decision = deny` 與訊息 `Writing to .env files is not allowed.`。",
+        "tone": "risk"
+      }
+    ],
+    "workflow": [
+      {
+        "step": "列出目前可用工具",
+        "prompt": "在 Gemini CLI 輸入 `/tools`，確認工具清單；再輸入 `/tools desc` 查看每個工具的描述與可接受的參數，先不要直接執行未知工具。",
+        "take": "先盤點工具能力，再決定要授予哪種操作。"
+      },
+      {
+        "step": "用 @ 讀取指定檔案內容",
+        "prompt": "在對話中使用 `@` 指定要讀取的檔案或資料夾，讓 CLI 觸發 `read_many_files`；要求它先列出讀取到的檔名與用途，不要在第一次操作就修改檔案。",
+        "take": "先建立可驗證的上下文，再進入修改。"
+      },
+      {
+        "step": "用 ! 執行一個可控 shell 命令",
+        "prompt": "在確認 trusted folder、sandbox 與 mutator confirmation 規則後，使用 `!` 觸發 `run_shell_command`，先選擇低風險的列出或檢查命令，執行前閱讀確認提示。",
+        "take": "Shell 是高權限工具，先從可逆、唯讀命令開始。"
+      },
+      {
+        "step": "加入 .env 寫入拒絕規則",
+        "prompt": "在 Gemini CLI policy 設定加入官方示例：`toolName = \"write_file\"`、`argsPattern = '\"file_path\":\".*\\.env\"'`、`decision = \"deny\"`、`priority = 100`，並設定 `denyMessage = \"Writing to .env files is not allowed.\"`。",
+        "take": "把敏感檔案保護寫成規則，不靠每次對話提醒。"
+      }
+    ],
+    "take": "Gemini CLI 的重點不是工具越多越好，而是先用 `/tools` 看清邊界，再用 `@` 讀取、`!` 執行，最後用 policy deny 對 `.env` 等敏感路徑建立硬性保護。"
+  },
+  {
     "id": "ai-employee-architecture-lesson1-2026-07-22",
     "title": "《AI 員工架構設計》第一課：AI System Architecture",
     "date": "2026.07.22",

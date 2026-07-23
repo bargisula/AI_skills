@@ -1,0 +1,24 @@
+{
+  "id": "vscode-agents-workflow-2026-07-22",
+  "title": "VS Code Agent 工作流：從開啟代理到規劃、修改與測試一條龍",
+  "date": "2026.07.22",
+  "sourceDate": "2026.07.15",
+  "category": "AI Agent 工作流",
+  "tags": ["VS Code", "Copilot", "Agent Mode", "Plan", "MCP"],
+  "sourceTitle": "Build with agents in VS Code",
+  "sourceUrl": "https://code.visualstudio.com/docs/agents/overview",
+  "summary": "VS Code 官方文件示範如何在工作區啟用 Agent，選擇 Copilot CLI，交給代理規劃、跨檔案修改、執行命令與自我修正。文件也清楚列出 Plan、權限層級、Agent Skills、prompt file、MCP 與 sandbox 等可配置元件。",
+  "keyPoints": [
+    {"title": "先確認 chat.agent.enabled", "text": "若組織政策關閉 chat.agent.enabled，需請管理員開啟，否則無法使用 VS Code Agent。", "tone": "action"},
+    {"title": "用 Plan agent 先產出步驟", "text": "複雜任務可先選 Plan agent，審閱並修正實作計畫後再進行檔案變更。", "tone": "change"},
+    {"title": "可選擇不同執行位置與權限", "text": "Agent 可在 VS Code 本機、Copilot CLI、GitHub cloud 或第三方 provider 執行，並可設定每次核准或較高自主權。", "tone": "risk"},
+    {"title": "把重複工作包成 Skills 或 prompt file", "text": "VS Code 可用 Agent Skills、prompt files、custom agents、MCP servers 與 hooks 讓工作流可重複使用。", "tone": "opportunity"}
+  ],
+  "workflow": [
+    {"step": "啟用 Agent 並選定工作區", "prompt": "在 VS Code 確認 chat.agent.enabled 已開啟；登入 GitHub 後選 Open in Agents，選擇工作區資料夾，再選 Copilot CLI agent 開始 session。", "take": "先把代理綁定到正確工作區，避免在錯誤資料夾修改檔案。"},
+    {"step": "用 Plan agent 拆解需求", "prompt": "請使用 Plan agent，將這個需求拆成可驗收的步驟：[貼上需求]。先不要修改任何檔案，請列出會碰到的檔案、命令、測試與風險。", "take": "先審計畫，再讓 Agent 動手。"},
+    {"step": "用具體 prompt 執行修改", "prompt": "Add a dark mode toggle to the header and make sure it works on mobile。請先說明預計修改的檔案，完成後執行相關測試並回報結果。", "take": "官方示例顯示，需求要包含功能與驗收條件，而不只是『幫我改漂亮』。"},
+    {"step": "設定權限與可重用工作流", "prompt": "請將這個重複任務整理成 Agent Skill 或 prompt file：[任務]，並列出需要的 MCP、hooks、權限層級與 sandbox 邊界。", "take": "把一次性對話整理成團隊可重複的工作流。"}
+  ],
+  "take": "VS Code Agent 的效率來自『先規劃、再授權、最後驗證』：把工作區、代理類型、權限和可重用指示一起設定，才不會只得到一次性的生成結果。"
+}
